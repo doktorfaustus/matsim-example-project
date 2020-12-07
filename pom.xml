@@ -17,7 +17,7 @@
 		<!--<matsim.version>0.13.0-SNAPSHOT</matsim.version>-->
 
 		<!-- weekly release -->
-		<matsim.version>12.0-2019w48-SNAPSHOT</matsim.version>
+		<matsim.version>12.0</matsim.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
@@ -117,6 +117,21 @@
 		</dependency>
 		<!--Dependencies from where stated above to here are added as a service; they can be removed if you don't need them-->
 
+		<dependency>
+			<groupId>org.matsim.contrib</groupId>
+			<artifactId>dvrp</artifactId>
+			<version>${matsim.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.matsim.contrib</groupId>
+			<artifactId>drt</artifactId>
+			<version>${matsim.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.matsim.contrib</groupId>
+            <artifactId>emissions</artifactId>
+            <version>${matsim.version}</version>
+        </dependency>
 	</dependencies>
 
 	<build>

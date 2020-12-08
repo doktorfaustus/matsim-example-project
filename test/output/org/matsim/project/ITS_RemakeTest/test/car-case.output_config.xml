@@ -1,17 +1,3 @@
-2020-12-08T19:35:30,114  INFO Gbl:63 JVM: 15.0.1; Oracle Corporation; mixed mode, sharing; 64-bit
-2020-12-08T19:35:30,114  INFO Gbl:67 OS: Mac OS X; 10.16; x86_64
-2020-12-08T19:35:30,114  INFO Gbl:70 CPU cores: 8
-2020-12-08T19:35:30,117  INFO Gbl:71 max. Memory: 4096.0MB (4294967296B)
-2020-12-08T19:35:30,117  INFO Gbl:109 MATSim-Build: r3047d3a9d4b11b836b6f2a61b9605de74420d5a2 (2020-06-04 11:51:49)
-2020-12-08T19:35:30,120  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.guice.DependencyGraphControlerListener
-2020-12-08T19:35:30,122  INFO MemoryObserver:41 used RAM: 27 MB  free: 54 MB  total: 82 MB
-2020-12-08T19:35:30,198  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.counts.CountsControlerListener
-2020-12-08T19:35:30,198  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.analysis.ModeStatsControlerListener
-2020-12-08T19:35:30,198  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.analysis.ScoreStatsControlerListener
-2020-12-08T19:35:30,198  INFO ControlerListenerManagerImpl:110 all ControlerStartupListeners called.
-2020-12-08T19:35:30,199  INFO ControlerUtils:79 config dump before iterations start
-2020-12-08T19:35:30,208  INFO ControlerUtils:83 
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
 <config>
@@ -28,7 +14,7 @@
 		<!-- Default:true; Defines whether time mutation changes an activity's duration. -->
 		<param name="mutationAffectsDuration" value="true" />
 		<!-- Default:1800.0; Defines how many seconds a time mutation can maximally shift a time. -->
-		<param name="mutationRange" value="1800.0" />
+		<param name="mutationRange" value="900.0" />
 	</module>
 	<module name="changeMode" >
 		<!-- Defines whether car availability is considered be considered or not. An agent has no car only if it has no license, or never access to a car. Default: true -->
@@ -53,18 +39,18 @@
 		<!-- Default=0. First Iteration of a simulation. -->
 		<param name="firstIteration" value="0" />
 		<!-- Default=1000. Last Iteration of a simulation. -->
-		<param name="lastIteration" value="1" />
+		<param name="lastIteration" value="0" />
 		<!-- Defines which mobility simulation will be used. Currently supported: qsim JDEQSim 
 		Depending on the chosen mobsim, you'll have to add additional config modules to configure the corresponding mobsim.
 		For 'qsim', add a module 'qsim' to the config. -->
 		<param name="mobsim" value="qsim" />
-		<param name="outputDirectory" value="test/output/org/matsim/project/RunMatsimTest/test/" />
+		<param name="outputDirectory" value="test/output/org/matsim/project/ITS_RemakeTest/test/" />
 		<!-- Possible values: failIfDirectoryExists, overwriteExistingFiles, deleteDirectoryIfExists -->
 		<param name="overwriteFiles" value="deleteDirectoryIfExists" />
 		<!-- The type of routing (least cost path) algorithm used, may have the values: Dijkstra, FastDijkstra, AStarLandmarks or FastAStarLandmarks -->
 		<param name="routingAlgorithmType" value="AStarLandmarks" />
 		<!-- An identifier for the current run which is used as prefix for output files and mentioned in output xml files etc. -->
-		<param name="runId" value="null" />
+		<param name="runId" value="car-case" />
 		<!-- Comma-separated list of visualizer output file formats. `transims', `googleearth', and `otfvis'. -->
 		<param name="snapshotFormat" value="" />
 		<!-- iterationNumber % writeEventsInterval == 0 defines in which iterations events are written to a file. `0' disables events writing completely. -->
@@ -98,14 +84,40 @@
 		<!-- Specifies how often the counts comparison should be calculated and written. -->
 		<param name="writeCountsInterval" value="10" />
 	</module>
+	<module name="drtfares" >
+		<parameterset type="drtfare" >
+			<!-- Basefare per Trip (fare = positive value) -->
+			<param name="basefare" value="0.5" />
+			<!-- Daily subscription fee (fee = positive value) -->
+			<param name="dailySubscriptionFee" value="0.0" />
+			<!-- drt fare per meter (fee = positive value) -->
+			<param name="distanceFare_m" value="2.0E-4" />
+			<!-- Minimum fare per trip (paid instead of the sum of base, time and distance fare if that sum would be lower than the minimum fare, fee = positive value). -->
+			<param name="minFarePerTrip" value="2.0" />
+			<!-- transport mode for which the fare applies. Default: drt -->
+			<param name="mode" value="drt" />
+			<!-- drt fare per hour (fee = positive value) -->
+			<param name="timeFare_h" value="3.6" />
+		</parameterset>
+	</module>
+	<module name="dvrp" >
+		<!-- Mode of which the network will be used for throwing events and hence calculating travel times. Default is car. -->
+		<param name="mobsimMode" value="car" />
+		<!-- Set of modes of which the network will be used for DVRP travel time estimation and routing DVRP vehicles. Each specific DVRP mode may use a subnetwork of this network for routing vehicles (e.g. DRT buses travelling only along a specified links or serving a limited area). Default is "car" (i.e. single-element set of modes), i.e. the car network is used. Empty value "" (i.e. empty set of modes) means no network filtering, i.e. the original scenario.network is used -->
+		<param name="networkModes" value="car" />
+		<!-- Used for OFFLINE estimation of travel times for VrpOptimizer by means of the exponential moving average. The weighting decrease, alpha, must be in (0,1]. We suggest small values of alpha, e.g. 0.05. The averaging starts from the initial travel time estimates. If not provided, the free-speed TTs is used as the initial estimates -->
+		<param name="travelTimeEstimationAlpha" value="0.05" />
+		<!-- Used for ONLINE estimation of travel times for VrpOptimizer by combining WithinDayTravelTime and DvrpOfflineTravelTimeEstimator. The beta coefficient is provided in seconds and should be either 0 (no online estimation) or positive (mixed online-offline estimation). For 'beta = 0', only the offline estimate is used: 'onlineTT(t) = offlineTT(t)', where 'offlineTT(t)' in the offline estimate for TT at time 't', For 'beta > 0', estimating future TTs at time 't', uses the currently observed TT to correct the offline estimates is made: where 'currentTT' is the currently observed TT, and 'correction = min(1, max(0, 1 - (time - currentTime) / beta))' The rule is that correction decreases linearly from 1 (when 'time = currentTime') to 0 (when 'time = currentTime + beta' For 'time > currentTime + beta' correction is 0, whereas if 'time < currentTime' it is 1. If beta is sufficiently large, 'beta >> 0', only the currently observed TT is used. -->
+		<param name="travelTimeEstimationBeta" value="0.0" />
+	</module>
 	<module name="facilities" >
 		<!-- This defines how facilities should be created. Possible values: none fromFile setInScenario onePerActivityLinkInPlansFile onePerActivityLinkInPlansFileExceptWhenCoordinatesAreGiven onePerActivityLocationInPlansFile  -->
-		<param name="facilitiesSource" value="fromFile" />
+		<param name="facilitiesSource" value="none" />
 		<!-- A prefix to be used for auto-generated IDs. -->
 		<param name="idPrefix" value="f_auto_" />
 		<!-- The Coordinates Reference System in which the coordinates are expressed in the input file. At import, the coordinates will be converted to the coordinate system defined in "global", and willbe converted back at export. If not specified, no conversion happens. -->
 		<param name="inputCRS" value="null" />
-		<param name="inputFacilitiesFile" value="facilities.xml" />
+		<param name="inputFacilitiesFile" value="null" />
 		<param name="inputFacilityAttributesFile" value="null" />
 		<param name="insistingOnUsingDeprecatedFacilitiesAttributeFile" value="false" />
 	</module>
@@ -128,13 +140,91 @@
 		<!-- Specifies how often the link stats should be calculated and written. Use 0 to disable the generation of link stats. -->
 		<param name="writeLinkStatsInterval" value="10" />
 	</module>
+	<module name="multiModeDrt" >
+		<parameterset type="drt" >
+			<!-- If true, the startLink is changed to last link in the current schedule, so the taxi starts the next day at the link where it stopped operating the day before. False by default. -->
+			<param name="changeStartLinkToLastLinkInSchedule" value="false" />
+			<!-- allows to configure a service area per drt mode.Used with serviceArea Operational Scheme -->
+			<param name="drtServiceAreaShapeFile" value="null" />
+			<!-- Beeline distance factor for DRT. Used in analyis and in plans file. The default value is 1.3. -->
+			<param name="estimatedBeelineDistanceFactor" value="1.3" />
+			<!-- Beeline-speed estimate for DRT. Used in analysis, optimisation constraints and in plans file, [m/s]. The default value is 25 km/h -->
+			<param name="estimatedDrtSpeed" value="8.333333333333334" />
+			<!-- Idle vehicles return to the nearest of all start links. See: DvrpVehicle.getStartLink() -->
+			<param name="idleVehiclesReturnToDepots" value="false" />
+			<!-- Defines the slope of the maxTravelTime estimation function (optimisation constraint), i.e. maxTravelTimeAlpha * estimated_drt_travel_time + maxTravelTimeBeta. Alpha should not be smaller than 1. -->
+			<param name="maxTravelTimeAlpha" value="1.5" />
+			<!-- Defines the shift of the maxTravelTime estimation function (optimisation constraint), i.e. maxTravelTimeAlpha * estimated_drt_travel_time + maxTravelTimeBeta. Beta should not be smaller than 0. -->
+			<param name="maxTravelTimeBeta" value="1200.0" />
+			<!-- Max wait time for the bus to come (optimisation constraint). -->
+			<param name="maxWaitTime" value="1200.0" />
+			<!-- Maximum beeline distance (in meters) to next stop location in stopbased system for access/egress walk leg to/from drt. If no stop can be found within this maximum distance will return a direct walk of type drtMode_walk -->
+			<param name="maxWalkDistance" value="1.7976931348623157E308" />
+			<!-- Mode which will be handled by PassengerEngine and VrpOptimizer (passengers'/customers' perspective) -->
+			<param name="mode" value="drt" />
+			<!-- Number of threads used for parallel evaluation of request insertion into existing schedules. Scales well up to 4, due to path data provision, the most computationally intensive part, using up to 4 threads. Default value is 'min(4, no. of cores available to JVM)' -->
+			<param name="numberOfThreads" value="4" />
+			<!-- Operational Scheme, either of door2door, stopbased or serviceAreaBased. door2door by default -->
+			<param name="operationalScheme" value="door2door" />
+			<!-- If true, the max travel and wait times of a submitted request are considered hard constraints (the request gets rejected if one of the constraints is violated). If false, the max travel and wait times are considered soft constraints (insertion of a request that violates one of the constraints is allowed, but its cost is increased by additional penalty to make it relatively less attractive). Penalisation of insertions can be customised by injecting a customised InsertionCostCalculator.PenaltyCalculator -->
+			<param name="rejectRequestIfMaxWaitOrTravelTimeViolated" value="true" />
+			<!-- Bus stop duration. Must be positive. -->
+			<param name="stopDuration" value="60.0" />
+			<!-- Stop locations file (transit schedule format, but without lines) for DRT stops. Used only for the stopbased mode -->
+			<param name="transitStopFile" value="null" />
+			<!-- Limit the operation of vehicles to links (of the 'dvrp_routing' network) with 'allowedModes' containing this 'mode'. For backward compatibility, the value is set to false by default - this means that the vehicles are allowed to operate on all links of the 'dvrp_routing' network. The 'dvrp_routing' is defined by DvrpConfigGroup.networkModes) -->
+			<param name="useModeFilteredSubnetwork" value="false" />
+			<!-- An XML file specifying the vehicle fleet. The file format according to dvrp_vehicles_v1.dtd -->
+			<param name="vehiclesFile" value="drtvehicles.xml" />
+			<!-- Writes out detailed DRT customer stats in each iteration. True by default. -->
+			<param name="writeDetailedCustomerStats" value="true" />
+			<parameterset type="minCostFlowRebalancing" >
+				<!-- size of square cells used for demand aggregation. Depends on demand, supply and network. Often used with values in the range of 500 - 2000 m -->
+				<param name="cellSize" value="2000.0" />
+				<!-- Specifies how often empty vehicle rebalancing is executed. Must be positive. Default is 1800 s. Expects an Integer Value -->
+				<param name="interval" value="1800" />
+				<!-- Maximum remaining time before busy vehicle becomes idle to be considered as soon-idle vehicle. Default is 900 s. In general should be lower than interval (e.g. 0.5 x interval) -->
+				<param name="maxTimeBeforeIdle" value="900.0" />
+				<!-- Minimum remaining service time of an idle/busy vehicle to be considered as rebalancable/soon-idle (respectively). Default is 3600 s. In general, should be higher than interval (e.g. 2 x interval). -->
+				<param name="minServiceTime" value="3600.0" />
+				<!-- alpha coefficient in linear target calculation. In general, should be lower than 1.0 to prevent over-reacting and high empty mileage. -->
+				<param name="targetAlpha" value="0.5" />
+				<!-- beta constant in linear target calculation. In general, should be lower than 1.0 to prevent over-reacting and high empty mileage. -->
+				<param name="targetBeta" value="0.5" />
+			</parameterset>
+		</parameterset>
+	</module>
 	<module name="network" >
 		<!-- The Coordinates Reference System in which the coordinates are expressed in the input file. At import, the coordinates will be converted to the coordinate system defined in "global", and willbe converted back at export. If not specified, no conversion happens. -->
 		<param name="inputCRS" value="null" />
 		<param name="inputChangeEventsFile" value="null" />
-		<param name="inputNetworkFile" value="network.xml" />
+		<param name="inputNetworkFile" value="network.xml.gz" />
 		<param name="laneDefinitionsFile" value="null" />
 		<param name="timeVariantNetwork" value="false" />
+	</module>
+	<module name="otfvis" >
+		<!-- The (initial) size of the agents.  Only a range of numbers is allowed, otherwise otfvis aborts rather ungracefully, or displays no agents at all. -->
+		<param name="agentSize" value="120.0" />
+		<!-- coloring scheme for otfvis.  Currently (2012) allowed values: standard bvg bvg2 byId gtfs taxicab infection -->
+		<param name="coloringScheme" value="taxicab" />
+		<!-- If non-moving items (e.g. agents at activities, at bus stops, etc.) should be showed.  May affect all non-moving items. -->
+		<param name="drawNonMovingItems" value="true" />
+		<param name="drawTransitFacilities" value="true" />
+		<param name="drawTransitFacilityIds" value="true" />
+		<param name="leftMouseFunc" value="Zoom" />
+		<!-- The (initial) width of the links of the network. Use positive floating point values. -->
+		<param name="linkWidth" value="30.0" />
+		<!-- Link width is proportional to `numberOfLanes' or to `capacity'. -->
+		<param name="linkwidthIsProportionalTo" value="numberOfLanes" />
+		<!-- URL to get WMS tiles from. For a local GeoServer instance, use http://localhost:8080/geoserver/wms?service=WMS& -->
+		<param name="mapBaseURL" value="" />
+		<!-- The WMS layer to display. For GeoServer and a layer called clipped in workspace mz, use mz:clipped -->
+		<param name="mapLayer" value="" />
+		<!-- Render everything on top of map tiles. Default: From tiles.openstreetmap.org -->
+		<param name="mapOverlayMode" value="false" />
+		<param name="middleMouseFunc" value="Pan" />
+		<param name="rightMouseFunc" value="Select" />
+		<param name="showTeleportation" value="false" />
 	</module>
 	<module name="parallelEventHandling" >
 		<!-- Estimated number of events during mobsim run. An optional optimization hint for the framework. -->
@@ -148,7 +238,7 @@
 	</module>
 	<module name="planCalcScore" >
 		<!-- logit model scale parameter. default: 1.  Has name and default value for historical reasons (see Bryan Raney's phd thesis). -->
-		<param name="BrainExpBeta" value="2.0" />
+		<param name="BrainExpBeta" value="1.0" />
 		<param name="PathSizeLogitBeta" value="1.0" />
 		<!-- fraction of iterations at which MSA score averaging is started. The matsim theory department suggests to use this together with switching off choice set innovation (where a similar switch exists), but it has not been tested yet. -->
 		<param name="fractionOfIterationsToStartScoreMSA" value="null" />
@@ -168,29 +258,125 @@
 			<param name="waiting" value="-0.0" />
 			<param name="waitingPt" value="-6.0" />
 			<parameterset type="activityParams" >
-				<param name="activityType" value="h" />
+				<param name="activityType" value="dummy" />
 				<param name="closingTime" value="undefined" />
 				<param name="earliestEndTime" value="undefined" />
 				<param name="latestStartTime" value="undefined" />
-				<param name="minimalDuration" value="08:00:00" />
+				<param name="minimalDuration" value="undefined" />
 				<param name="openingTime" value="undefined" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="12:00:00" />
+				<param name="typicalDuration" value="02:00:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
-				<param name="activityType" value="w" />
-				<param name="closingTime" value="18:00:00" />
+				<param name="activityType" value="car interaction" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="false" />
+				<param name="typicalDuration" value="undefined" />
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="pt interaction" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="false" />
+				<param name="typicalDuration" value="undefined" />
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="bike interaction" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="false" />
+				<param name="typicalDuration" value="undefined" />
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="drt interaction" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="false" />
+				<param name="typicalDuration" value="undefined" />
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="taxi interaction" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="false" />
+				<param name="typicalDuration" value="undefined" />
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="other interaction" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="false" />
+				<param name="typicalDuration" value="undefined" />
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="walk interaction" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="false" />
+				<param name="typicalDuration" value="undefined" />
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="work" />
+				<param name="closingTime" value="17:00:00" />
 				<param name="earliestEndTime" value="undefined" />
 				<param name="latestStartTime" value="09:00:00" />
-				<param name="minimalDuration" value="06:00:00" />
-				<param name="openingTime" value="07:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="06:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<param name="typicalDuration" value="08:00:00" />
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="home" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<param name="typicalDuration" value="12:00:00" />
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="modeParams" >
@@ -226,6 +412,42 @@
 				<param name="mode" value="walk" />
 				<param name="monetaryDistanceRate" value="0.0" />
 			</parameterset>
+			<parameterset type="modeParams" >
+				<param name="constant" value="0.0" />
+				<param name="dailyMonetaryConstant" value="0.0" />
+				<param name="dailyUtilityConstant" value="0.0" />
+				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+				<param name="mode" value="bike" />
+				<param name="monetaryDistanceRate" value="0.0" />
+			</parameterset>
+			<parameterset type="modeParams" >
+				<param name="constant" value="0.0" />
+				<param name="dailyMonetaryConstant" value="0.0" />
+				<param name="dailyUtilityConstant" value="0.0" />
+				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+				<param name="mode" value="ride" />
+				<param name="monetaryDistanceRate" value="0.0" />
+			</parameterset>
+			<parameterset type="modeParams" >
+				<param name="constant" value="0.0" />
+				<param name="dailyMonetaryConstant" value="0.0" />
+				<param name="dailyUtilityConstant" value="0.0" />
+				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+				<param name="mode" value="other" />
+				<param name="monetaryDistanceRate" value="0.0" />
+			</parameterset>
+			<parameterset type="modeParams" >
+				<param name="constant" value="0.0" />
+				<param name="dailyMonetaryConstant" value="0.0" />
+				<param name="dailyUtilityConstant" value="0.0" />
+				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
+				<param name="mode" value="drt" />
+				<param name="monetaryDistanceRate" value="0.0" />
+			</parameterset>
 		</parameterset>
 	</module>
 	<module name="plans" >
@@ -236,7 +458,7 @@
 		<!-- The Coordinates Reference System in which the coordinates are expressed in the input file. At import, the coordinates will be converted to the coordinate system defined in "global", and willbe converted back at export. If not specified, no conversion happens. -->
 		<param name="inputCRS" value="null" />
 		<param name="inputPersonAttributesFile" value="null" />
-		<param name="inputPlansFile" value="plans100.xml" />
+		<param name="inputPlansFile" value="cb-carplans.xml" />
 		<param name="insistingOnUsingDeprecatedPersonAttributeFile" value="false" />
 		<!-- Defines how routes are stored in memory. Currently supported: LinkNetworkRoute, CompressedNetworkRoute. -->
 		<param name="networkRouteType" value="LinkNetworkRoute" />
@@ -302,7 +524,7 @@
 		<param name="ptCountsInterval" value="10" />
 	</module>
 	<module name="qsim" >
-		<param name="endTime" value="00:00:00" />
+		<param name="endTime" value="24:00:00" />
 		<param name="flowCapacityFactor" value="1.0" />
 		<!-- decides if waiting vehicles enter the network after or before the already driving vehicles were moved. Default: false -->
 		<param name="insertingWaitingVehiclesBeforeDrivingVehicles" value="true" />
@@ -327,9 +549,9 @@
 		<!-- Possible values: minOfEndtimeAndMobsimFinished, onlyUseEndtime -->
 		<param name="simEndtimeInterpretation" value="null" />
 		<!-- Options: maxOfStarttimeAndEarliestActivityEnd onlyUseStarttime  -->
-		<param name="simStarttimeInterpretation" value="maxOfStarttimeAndEarliestActivityEnd" />
+		<param name="simStarttimeInterpretation" value="onlyUseStarttime" />
 		<!-- snapshotStyle. One of: equiDist queue withHoles withHolesAndShowHoles kinematicWaves  -->
-		<param name="snapshotStyle" value="equiDist" />
+		<param name="snapshotStyle" value="queue" />
 		<param name="snapshotperiod" value="00:00:00" />
 		<param name="startTime" value="00:00:00" />
 		<param name="storageCapacityFactor" value="1.0" />
@@ -359,7 +581,7 @@
 		<!-- root directory for temporary files generated by the external executable. Provided as a service; I don't think this is used by MATSim. -->
 		<param name="ExternalExeTmpFileRootDir" value="null" />
 		<!-- fraction of iterations where innovative strategies are switched off.  Something like 0.8 should be good.  E.g. if you run from iteration 400 to iteration 500, innovation is switched off at iteration 480 -->
-		<param name="fractionOfIterationsToDisableInnovation" value="Infinity" />
+		<param name="fractionOfIterationsToDisableInnovation" value="0.8" />
 		<!-- maximum number of plans per agent.  ``0'' means ``infinity''.  Currently (2010), ``5'' is a good number -->
 		<param name="maxAgentPlanMemorySize" value="5" />
 		<!-- strategyName of PlanSelector for plans removal.  Possible defaults: WorstPlanSelector SelectRandom SelectExpBetaForRemoval ChangeExpBetaForRemoval PathSizeLogitSelectorForRemoval . The current default, WorstPlanSelector is not a good choice from a discrete choice theoretical perspective. Alternatives, however, have not been systematically tested. kai, feb'12 -->
@@ -370,17 +592,10 @@
 			<!-- path to external executable (if applicable) -->
 			<param name="executionPath" value="null" />
 			<!-- strategyName of strategy.  Possible default names: SelectRandom BestScore KeepLastSelected ChangeExpBeta SelectExpBeta SelectPathSizeLogit      (selectors), ReRouteTimeAllocationMutatorTimeAllocationMutator_ReRouteChangeSingleTripModeChangeTripModeSubtourModeChoice (innovative strategies). -->
-			<param name="strategyName" value="BestScore" />
+			<param name="strategyName" value="TimeAllocationMutator" />
 			<!-- subpopulation to which the strategy applies. "null" refers to the default population, that is, the set of persons for which no explicit subpopulation is defined (ie no subpopulation attribute) -->
 			<param name="subpopulation" value="null" />
 			<!-- weight of a strategy: for each agent, a strategy will be selected with a probability proportional to its weight -->
-			<param name="weight" value="0.9" />
-		</parameterset>
-		<parameterset type="strategysettings" >
-			<param name="disableAfterIteration" value="-1" />
-			<param name="executionPath" value="null" />
-			<param name="strategyName" value="ReRoute" />
-			<param name="subpopulation" value="null" />
 			<param name="weight" value="0.1" />
 		</parameterset>
 	</module>
@@ -461,193 +676,3 @@
 	</module>
 
 </config>
-
-2020-12-08T19:35:30,211  INFO ControlerUtils:84 Complete config dump done.
-2020-12-08T19:35:30,211  INFO ControlerUtils:85 Checking consistency of config...
-2020-12-08T19:35:30,211  INFO VspConfigConsistencyCheckerImpl:58 NOT running vsp config consistency check because vsp defaults checking level is set to IGNORE
-2020-12-08T19:35:30,213  INFO ControlerUtils:87 Checking consistency of config done.
-2020-12-08T19:35:30,214  WARN XY2LinksForFacilities:50 There is no link for at least a facility. Assigning links for such facilities from coords.
-2020-12-08T19:35:30,215  WARN XY2LinksForFacilities:51  This message given only once.
-2020-12-08T19:35:30,216  INFO NetworkImpl:422 building QuadTree for nodes: xrange(-20001.0,5001.0); yrange(-10001.0,5926.0)
-2020-12-08T19:35:30,218  INFO NetworkImpl:431 Building QuadTree took 0.003 seconds.
-2020-12-08T19:35:30,221  WARN PrepareForSimImpl:222 'usePersonIdForMissingVehicleId' is deprecated. It will be removed soon.
-2020-12-08T19:35:30,225  INFO Counter:69 [VehiclesImpl] added vehicle # 1
-2020-12-08T19:35:30,225  INFO Counter:69 [VehiclesImpl] added vehicle # 2
-2020-12-08T19:35:30,226  INFO Counter:69 [VehiclesImpl] added vehicle # 4
-2020-12-08T19:35:30,226  INFO Counter:69 [VehiclesImpl] added vehicle # 8
-2020-12-08T19:35:30,226  INFO Counter:69 [VehiclesImpl] added vehicle # 16
-2020-12-08T19:35:30,227  INFO Counter:69 [VehiclesImpl] added vehicle # 32
-2020-12-08T19:35:30,228  INFO Counter:69 [VehiclesImpl] added vehicle # 64
-2020-12-08T19:35:30,244  INFO PreProcessDijkstra:118 nodes in dead ends: 0 (total nodes: 15). Done in 0 ms
-2020-12-08T19:35:30,245  WARN PreProcessEuclidean:59 There are links with stored length smaller than their Euclidean distance in this network. Thus, A* cannot guarantee to calculate the least-cost paths between two nodes.
-2020-12-08T19:35:30,245  INFO PreProcessLandmarks:112 Putting landmarks on network...
-2020-12-08T19:35:30,247  INFO LandmarkerPieSlices:96 Filling sectors...
-2020-12-08T19:35:30,248  INFO LandmarkerPieSlices:163 There is no node in sector 0!
-2020-12-08T19:35:30,248  INFO LandmarkerPieSlices:163 There is no node in sector 1!
-2020-12-08T19:35:30,248  INFO LandmarkerPieSlices:163 There is no node in sector 2!
-2020-12-08T19:35:30,248  INFO LandmarkerPieSlices:163 There is no node in sector 3!
-2020-12-08T19:35:30,248  INFO LandmarkerPieSlices:163 There is no node in sector 4!
-2020-12-08T19:35:30,248  INFO LandmarkerPieSlices:163 There is no node in sector 5!
-2020-12-08T19:35:30,249  INFO LandmarkerPieSlices:163 There is no node in sector 6!
-2020-12-08T19:35:30,249  INFO LandmarkerPieSlices:163 There is no node in sector 7!
-2020-12-08T19:35:30,249  INFO LandmarkerPieSlices:163 There is no node in sector 8!
-2020-12-08T19:35:30,249  INFO LandmarkerPieSlices:163 There is no node in sector 9!
-2020-12-08T19:35:30,249  INFO LandmarkerPieSlices:163 There is no node in sector 10!
-2020-12-08T19:35:30,249  INFO LandmarkerPieSlices:163 There is no node in sector 11!
-2020-12-08T19:35:30,249  INFO LandmarkerPieSlices:163 There is no node in sector 12!
-2020-12-08T19:35:30,249  INFO LandmarkerPieSlices:163 There is no node in sector 13!
-2020-12-08T19:35:30,249  INFO LandmarkerPieSlices:163 There is no node in sector 14!
-2020-12-08T19:35:30,251  INFO LandmarkerPieSlices:100 Reducing number of landmarks from 16 to 1...
-2020-12-08T19:35:30,251  INFO LandmarkerPieSlices:107 Refining landmarks...
-2020-12-08T19:35:30,251  INFO LandmarkerPieSlices:109 done
-2020-12-08T19:35:30,252  INFO PreProcessLandmarks:115 done in 6 ms
-2020-12-08T19:35:30,252  INFO PreProcessLandmarks:117 Initializing landmarks data
-2020-12-08T19:35:30,252  INFO PreProcessLandmarks:129 Calculating distance from each node to each of the 16 landmarks using 2 threads...
-2020-12-08T19:35:30,254  INFO PreProcessLandmarks:139 wait for landmarks Calculator to finish...
-2020-12-08T19:35:30,255  INFO PreProcessLandmarks:161 done in 3 ms
-2020-12-08T19:35:30,260  INFO NetworkImpl:163  node # 1
-2020-12-08T19:35:30,261  INFO NetworkImpl:163  node # 4
-2020-12-08T19:35:30,262  INFO NetworkImpl:159  link # 1
-2020-12-08T19:35:30,262  INFO NetworkImpl:159  link # 4
-2020-12-08T19:35:30,262  INFO NetworkImpl:159  link # 16
-2020-12-08T19:35:30,263  WARN RandomizingTimeDistanceTravelDisutilityFactory:112 There will be no routing randomness. The randomization of the travel disutility requires the monetary distance rate to be different than zero. Continuing anyway.
-2020-12-08T19:35:30,264  WARN RandomizingTimeDistanceTravelDisutilityFactory:117 There will be no routing randomness. The randomization of the travel disutility requires the travel time cost rate to be different than zero. Continuing anyway.
-2020-12-08T19:35:30,265  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
-2020-12-08T19:35:30,266  INFO PreProcessDijkstra:118 nodes in dead ends: 0 (total nodes: 15). Done in 0 ms
-2020-12-08T19:35:30,266  WARN PreProcessEuclidean:59 There are links with stored length smaller than their Euclidean distance in this network. Thus, A* cannot guarantee to calculate the least-cost paths between two nodes.
-2020-12-08T19:35:30,266  INFO PreProcessLandmarks:112 Putting landmarks on network...
-2020-12-08T19:35:30,267  INFO LandmarkerPieSlices:96 Filling sectors...
-2020-12-08T19:35:30,267  INFO LandmarkerPieSlices:163 There is no node in sector 0!
-2020-12-08T19:35:30,267  INFO LandmarkerPieSlices:163 There is no node in sector 1!
-2020-12-08T19:35:30,267  INFO LandmarkerPieSlices:163 There is no node in sector 2!
-2020-12-08T19:35:30,268  INFO LandmarkerPieSlices:163 There is no node in sector 3!
-2020-12-08T19:35:30,268  INFO LandmarkerPieSlices:163 There is no node in sector 4!
-2020-12-08T19:35:30,268  INFO LandmarkerPieSlices:163 There is no node in sector 5!
-2020-12-08T19:35:30,268  INFO LandmarkerPieSlices:163 There is no node in sector 6!
-2020-12-08T19:35:30,269  INFO LandmarkerPieSlices:163 There is no node in sector 7!
-2020-12-08T19:35:30,269  INFO LandmarkerPieSlices:163 There is no node in sector 8!
-2020-12-08T19:35:30,269  INFO LandmarkerPieSlices:163 There is no node in sector 9!
-2020-12-08T19:35:30,269  INFO LandmarkerPieSlices:163 There is no node in sector 10!
-2020-12-08T19:35:30,269  INFO LandmarkerPieSlices:163 There is no node in sector 11!
-2020-12-08T19:35:30,269  INFO LandmarkerPieSlices:163 There is no node in sector 12!
-2020-12-08T19:35:30,269  INFO LandmarkerPieSlices:163 There is no node in sector 13!
-2020-12-08T19:35:30,269  INFO LandmarkerPieSlices:163 There is no node in sector 14!
-2020-12-08T19:35:30,269  INFO LandmarkerPieSlices:100 Reducing number of landmarks from 16 to 1...
-2020-12-08T19:35:30,269  INFO LandmarkerPieSlices:107 Refining landmarks...
-2020-12-08T19:35:30,270  INFO LandmarkerPieSlices:109 done
-2020-12-08T19:35:30,270  INFO PreProcessLandmarks:115 done in 3 ms
-2020-12-08T19:35:30,270  INFO PreProcessLandmarks:117 Initializing landmarks data
-2020-12-08T19:35:30,270  INFO PreProcessLandmarks:129 Calculating distance from each node to each of the 16 landmarks using 2 threads...
-2020-12-08T19:35:30,270  INFO PreProcessLandmarks:139 wait for landmarks Calculator to finish...
-2020-12-08T19:35:30,270  INFO PreProcessLandmarks:161 done in 0 ms
-2020-12-08T19:35:30,273  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
-2020-12-08T19:35:30,274  INFO Counter:69 [PersonPrepareForSim] handled person # 2
-2020-12-08T19:35:30,274  INFO Counter:69 [PersonPrepareForSim] handled person # 1
-2020-12-08T19:35:30,274  INFO Counter:69 [PersonPrepareForSim] handled person # 4
-2020-12-08T19:35:30,274  INFO Counter:69 [PersonPrepareForSim] handled person # 8
-2020-12-08T19:35:30,274  INFO Counter:69 [PersonPrepareForSim] handled person # 16
-2020-12-08T19:35:30,275  INFO Counter:69 [PersonPrepareForSim] handled person # 32
-2020-12-08T19:35:30,275  INFO Counter:69 [PersonPrepareForSim] handled person # 64
-2020-12-08T19:35:30,276  INFO Counter:74 [PersonPrepareForSim] handled person # 100
-2020-12-08T19:35:30,277  INFO AbstractController:124 ###################################################
-2020-12-08T19:35:30,277  INFO AbstractController:125 ### ITERATION 0 BEGINS
-2020-12-08T19:35:30,278  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.analysis.LegHistogramListener
-2020-12-08T19:35:30,278  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.analysis.LinkStatsControlerListener
-2020-12-08T19:35:30,278  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.core.replanning.ReplanningContextImpl
-2020-12-08T19:35:30,278  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.core.scoring.ScoringFunctionsForPopulation$1
-2020-12-08T19:35:30,292  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.core.scoring.ExperiencedPlansServiceImpl$1
-2020-12-08T19:35:30,292  INFO ControlerListenerManagerImpl:148 [it.0] all ControlerIterationStartsListeners called.
-2020-12-08T19:35:30,293  INFO ControlerListenerManagerImpl:224 calling notifyBeforeMobsim on org.matsim.core.controler.corelisteners.EventsHandlingImpl
-2020-12-08T19:35:30,293  INFO EventsManagerImpl:184 resetting Event-Handlers
-2020-12-08T19:35:30,293  INFO EventsManagerImpl:191   org.matsim.core.trafficmonitoring.TravelTimeCalculator
-2020-12-08T19:35:30,293  INFO EventsManagerImpl:191   org.matsim.core.scoring.EventsToLegsAndActivities
-2020-12-08T19:35:30,293  INFO EventsManagerImpl:191   org.matsim.analysis.VolumesAnalyzer
-2020-12-08T19:35:30,293  INFO EventsManagerImpl:191   org.matsim.core.scoring.ScoringFunctionsForPopulation
-2020-12-08T19:35:30,293  INFO EventsManagerImpl:191   org.matsim.analysis.LegHistogram
-2020-12-08T19:35:30,293  INFO EventsManagerImpl:191   org.matsim.analysis.CalcLegTimes
-2020-12-08T19:35:30,297  INFO EventsManagerImpl:158 adding Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
-2020-12-08T19:35:30,297  INFO EventsManagerImpl:162   org.matsim.core.events.algorithms.EventWriter
-2020-12-08T19:35:30,298  INFO EventsManagerImpl:162   org.matsim.core.events.handler.BasicEventHandler
-2020-12-08T19:35:30,298  INFO EventsManagerImpl:221     > org.matsim.api.core.v01.events.Event
-2020-12-08T19:35:30,298  INFO EventsManagerImpl:170 
-2020-12-08T19:35:30,298  INFO EventsManagerImpl:158 adding Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
-2020-12-08T19:35:30,298  INFO EventsManagerImpl:162   org.matsim.core.events.algorithms.EventWriter
-2020-12-08T19:35:30,298  INFO EventsManagerImpl:162   org.matsim.core.events.handler.BasicEventHandler
-2020-12-08T19:35:30,298  INFO EventsManagerImpl:221     > org.matsim.api.core.v01.events.Event
-2020-12-08T19:35:30,298  INFO EventsManagerImpl:170 
-2020-12-08T19:35:30,298  INFO ControlerListenerManagerImpl:224 calling notifyBeforeMobsim on org.matsim.core.controler.corelisteners.PlansDumpingImpl
-2020-12-08T19:35:30,298  INFO PlansDumpingImpl:76 dumping plans...
-2020-12-08T19:35:30,304  WARN ObjectAttributesConverter:77 No AttributeConverter found for class java.util.Collections$UnmodifiableMap. Not all attribute values can be converted.
-2020-12-08T19:35:30,305  INFO Counter:69 [PopulationWriter] dumped person # 1
-2020-12-08T19:35:30,305  INFO Counter:69 [PopulationWriter] dumped person # 2
-2020-12-08T19:35:30,306  INFO Counter:69 [PopulationWriter] dumped person # 4
-2020-12-08T19:35:30,306  INFO Counter:69 [PopulationWriter] dumped person # 8
-2020-12-08T19:35:30,307  INFO Counter:69 [PopulationWriter] dumped person # 16
-2020-12-08T19:35:30,309  INFO Counter:69 [PopulationWriter] dumped person # 32
-2020-12-08T19:35:30,312  INFO Counter:69 [PopulationWriter] dumped person # 64
-2020-12-08T19:35:30,315  INFO PopulationWriter:144 Population written to: test/output/org/matsim/project/RunMatsimTest/test/ITERS/it.0/0.plans.xml.gz
-2020-12-08T19:35:30,316  INFO Counter:74 [PopulationWriter] dumped person # 100
-2020-12-08T19:35:30,316  INFO PlansDumpingImpl:93 finished plans dump.
-2020-12-08T19:35:30,317  INFO ControlerListenerManagerImpl:229 calling notifyBeforeMobsim on org.matsim.core.population.VspPlansCleaner
-2020-12-08T19:35:30,317  INFO ControlerListenerManagerImpl:232 [it.0] all ControlerBeforeMobsimListeners called.
-2020-12-08T19:35:30,318  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
-2020-12-08T19:35:30,318  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
-2020-12-08T19:35:30,319  INFO Counter:69 [PersonPrepareForSim] handled person # 1
-2020-12-08T19:35:30,319  INFO Counter:69 [PersonPrepareForSim] handled person # 2
-2020-12-08T19:35:30,319  INFO Counter:69 [PersonPrepareForSim] handled person # 4
-2020-12-08T19:35:30,319  INFO Counter:69 [PersonPrepareForSim] handled person # 8
-2020-12-08T19:35:30,319  INFO Counter:69 [PersonPrepareForSim] handled person # 16
-2020-12-08T19:35:30,319  INFO Counter:69 [PersonPrepareForSim] handled person # 32
-2020-12-08T19:35:30,320  INFO Counter:69 [PersonPrepareForSim] handled person # 64
-2020-12-08T19:35:30,320  INFO Counter:74 [PersonPrepareForSim] handled person # 100
-2020-12-08T19:35:30,375  INFO MobsimListenerManager:49 calling addQueueSimulationListener
-2020-12-08T19:35:30,376  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimInitializedListener
-2020-12-08T19:35:30,376  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
-2020-12-08T19:35:30,376  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.contrib.otfvis.OTFVisLiveModule$OTFVisMobsimListener
-2020-12-08T19:35:30,377  INFO MobsimListenerManager:49 calling addQueueSimulationListener
-2020-12-08T19:35:30,377  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeCleanupListener
-2020-12-08T19:35:30,377  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimInitializedListener
-2020-12-08T19:35:30,377  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.vis.snapshotwriters.SnapshotWriterManager
-2020-12-08T19:35:30,377  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
-2020-12-08T19:35:30,377  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimAfterSimStepListener
-2020-12-08T19:35:30,389  WARN QueueWithBuffer:390 Link 1 too small: enlarge storage capacity from: 1333.3333333333333 Vehicles to: 3599.712023038157 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2020-12-08T19:35:30,390  WARN QueueWithBuffer:390 Link 20 too small: enlarge storage capacity from: 1333.3333333333333 Vehicles to: 3599.712023038157 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2020-12-08T19:35:30,391  WARN QueueWithBuffer:390 Link 21 too small: enlarge storage capacity from: 1333.3333333333333 Vehicles to: 3599.712023038157 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2020-12-08T19:35:30,391  WARN QueueWithBuffer:390 Link 22 too small: enlarge storage capacity from: 4666.666666666667 Vehicles to: 12598.99208063355 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2020-12-08T19:35:30,391  WARN QueueWithBuffer:390 Link 23 too small: enlarge storage capacity from: 1333.3333333333333 Vehicles to: 3599.712023038157 Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
-2020-12-08T19:35:30,397  INFO QSimProvider:102 Added MobsimEngine class org.matsim.core.mobsim.qsim.ActivityEngineDefaultImpl
-2020-12-08T19:35:30,397  INFO QSimProvider:108 Added Activityhandler class org.matsim.core.mobsim.qsim.ActivityEngineDefaultImpl
-2020-12-08T19:35:30,397  INFO QSimProvider:114 Added DepartureHandler class org.matsim.core.mobsim.qsim.qnetsimengine.VehicularDepartureHandler
-2020-12-08T19:35:30,397  INFO QSimProvider:102 Added MobsimEngine class org.matsim.core.mobsim.qsim.qnetsimengine.QNetsimEngineWithThreadpool
-2020-12-08T19:35:30,397  INFO QSimProvider:102 Added MobsimEngine class org.matsim.core.mobsim.qsim.DefaultTeleportationEngine
-2020-12-08T19:35:30,397  INFO QSimProvider:114 Added DepartureHandler class org.matsim.core.mobsim.qsim.DefaultTeleportationEngine
-2020-12-08T19:35:30,398  INFO QSimProvider:120 Added AgentSource class org.matsim.core.mobsim.qsim.agents.PopulationAgentSource
-2020-12-08T19:35:30,398  INFO MobsimListenerManager:49 calling addQueueSimulationListener
-2020-12-08T19:35:30,398  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeSimStepListener
-2020-12-08T19:35:30,398  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
-2020-12-08T19:35:30,398  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.qsim.messagequeueengine.MessageQueueEngine
-2020-12-08T19:35:30,398  INFO QSimProvider:126 Added MobsimListener class org.matsim.core.mobsim.qsim.messagequeueengine.MessageQueueEngine
-2020-12-08T19:35:30,404  INFO PopulationUtils:1194 adding scenario element for allpersons container
-2020-12-08T19:35:30,404  INFO PopulationImpl:105  person # 1
-2020-12-08T19:35:30,404  INFO PopulationImpl:105  person # 4
-2020-12-08T19:35:30,404  INFO PopulationImpl:105  person # 16
-2020-12-08T19:35:30,404  INFO PopulationImpl:105  person # 64
-2020-12-08T19:35:30,405  INFO VehicleUtils:328 adding scenario element for allvehicles container
-2020-12-08T19:35:30,405  INFO Counter:69 [VehiclesImpl] added vehicle # 1
-2020-12-08T19:35:30,405  INFO Counter:69 [VehiclesImpl] added vehicle # 2
-2020-12-08T19:35:30,405  INFO Counter:69 [VehiclesImpl] added vehicle # 4
-2020-12-08T19:35:30,405  INFO Counter:69 [VehiclesImpl] added vehicle # 8
-2020-12-08T19:35:30,405  INFO Counter:69 [VehiclesImpl] added vehicle # 16
-2020-12-08T19:35:30,406  INFO Counter:69 [VehiclesImpl] added vehicle # 32
-2020-12-08T19:35:30,406  INFO Counter:69 [VehiclesImpl] added vehicle # 64
-2020-12-08T19:35:30,409  INFO AbstractQNetsimEngine:427 Assigned 15 nodes and 23 links to QSimEngineRunner #0
-2020-12-08T19:35:30,457  INFO MobsimListenerManager:49 calling addQueueSimulationListener
-2020-12-08T19:35:30,458  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeCleanupListener
-2020-12-08T19:35:30,458  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeSimStepListener
-2020-12-08T19:35:30,458  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
-2020-12-08T19:35:30,458  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimAfterSimStepListener
-2020-12-08T19:35:30,458  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.PlayPauseSimulationControl$PlayPauseMobsimListener
-2020-12-08T19:35:34,591  INFO EventsManagerImpl:135  event # 1
-2020-12-08T19:35:34,596  INFO EventsManagerImpl:135  event # 4
-2020-12-08T19:35:34,598  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 05:58:30 : #links=0 #nodes=1
-2020-12-08T19:35:34,606  INFO QSim:549 SIMULATION (NEW QSim) AT 05:58:30 : #Veh=100 lost=0 simT=0.0s realT=4s; (s/r): 0.0

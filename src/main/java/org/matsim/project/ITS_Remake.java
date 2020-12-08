@@ -12,6 +12,7 @@ import org.matsim.contrib.emissions.EmissionModule;
 import org.matsim.contrib.otfvis.OTFVisLiveModule;
 import org.matsim.core.api.experimental.events.EventsManager;
 import org.matsim.core.config.Config;
+import org.matsim.core.config.ConfigGroup;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.controler.AbstractModule;
 import org.matsim.core.controler.Controler;
@@ -31,41 +32,19 @@ public static void main(String[] args) {
         config = ConfigUtils.loadConfig("scenarios/ue5_input_files/carconfig.xml", new DrtFaresConfigGroup(), new DvrpConfigGroup(), new MultiModeDrtConfigGroup(), new OTFVisConfigGroup());
     } else {
         config = ConfigUtils.loadConfig(args);
+
     }
     config.controler().setOverwriteFileSetting(OutputDirectoryHierarchy.OverwriteFileSetting.deleteDirectoryIfExists);
-    config.controler().setOutputDirectory("scenarios/ue5_input_files/myOutput");
-
-    // possibly modify config here
-
-    // ---
-
+}
+private static void run(Config config){
     Scenario scenario = ScenarioUtils.loadScenario(config);
     EventsManager eventsManager = EventsUtils.createEventsManager();
-
-    // possibly modify scenario here
-
-    // ---
-
     Controler controler = new Controler(scenario);
-
-//    controler.addOverridingModule(new AbstractModule(){
-//        @Override
-//        public void install(){
-//            bind( Scenario.class ).toInstance( scenario );
-//            bind( EventsManager.class ).toInstance( eventsManager );
-//            bind( EmissionModule.class ) ;
-//            bind(MultiModeDrtModule.class);
-//            bind(DrtModeModule.class);
-//            bind(DrtFareModule.class);
-//        }
-    //});
-    //com.google.inject.Injector injector = Injector.createInjector(config, module );
-    // possibly modify controler here
-    controler.addOverridingModule(new DrtFareModule());
-    //controler.addOverridingModule(new OTFVisLiveModule());
-
-    // ---
-
     controler.run();
 }
+
+public static void main(Config config){
+    run(config);
+}
+
 }

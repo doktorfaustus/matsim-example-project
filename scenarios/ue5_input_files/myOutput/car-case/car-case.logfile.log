@@ -1,16 +1,16 @@
-2020-12-08T21:18:35,303  INFO Gbl:63 JVM: 15.0.1; Oracle Corporation; mixed mode, sharing; 64-bit
-2020-12-08T21:18:35,304  INFO Gbl:67 OS: Mac OS X; 10.16; x86_64
-2020-12-08T21:18:35,304  INFO Gbl:70 CPU cores: 8
-2020-12-08T21:18:35,308  INFO Gbl:71 max. Memory: 4096.0MB (4294967296B)
-2020-12-08T21:18:35,309  INFO Gbl:109 MATSim-Build: r3047d3a9d4b11b836b6f2a61b9605de74420d5a2 (2020-06-04 11:51:49)
-2020-12-08T21:18:35,311  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.guice.DependencyGraphControlerListener
-2020-12-08T21:18:35,313  INFO MemoryObserver:41 used RAM: 71 MB  free: 42 MB  total: 114 MB
-2020-12-08T21:18:35,422  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.counts.CountsControlerListener
-2020-12-08T21:18:35,423  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.analysis.ModeStatsControlerListener
-2020-12-08T21:18:35,423  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.analysis.ScoreStatsControlerListener
-2020-12-08T21:18:35,424  INFO ControlerListenerManagerImpl:110 all ControlerStartupListeners called.
-2020-12-08T21:18:35,424  INFO ControlerUtils:79 config dump before iterations start
-2020-12-08T21:18:35,445  INFO ControlerUtils:83 
+2020-12-08T21:24:53,003  INFO Gbl:63 JVM: 15.0.1; Oracle Corporation; mixed mode, sharing; 64-bit
+2020-12-08T21:24:53,003  INFO Gbl:67 OS: Mac OS X; 10.16; x86_64
+2020-12-08T21:24:53,004  INFO Gbl:70 CPU cores: 8
+2020-12-08T21:24:53,006  INFO Gbl:71 max. Memory: 4096.0MB (4294967296B)
+2020-12-08T21:24:53,007  INFO Gbl:109 MATSim-Build: r3047d3a9d4b11b836b6f2a61b9605de74420d5a2 (2020-06-04 11:51:49)
+2020-12-08T21:24:53,010  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.guice.DependencyGraphControlerListener
+2020-12-08T21:24:53,012  INFO MemoryObserver:41 used RAM: 73 MB  free: 40 MB  total: 114 MB
+2020-12-08T21:24:53,102  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.counts.CountsControlerListener
+2020-12-08T21:24:53,103  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.analysis.ModeStatsControlerListener
+2020-12-08T21:24:53,103  INFO ControlerListenerManagerImpl:107 calling notifyStartup on org.matsim.analysis.ScoreStatsControlerListener
+2020-12-08T21:24:53,103  INFO ControlerListenerManagerImpl:110 all ControlerStartupListeners called.
+2020-12-08T21:24:53,104  INFO ControlerUtils:79 config dump before iterations start
+2020-12-08T21:24:53,123  INFO ControlerUtils:83 
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
@@ -58,7 +58,7 @@
 		Depending on the chosen mobsim, you'll have to add additional config modules to configure the corresponding mobsim.
 		For 'qsim', add a module 'qsim' to the config. -->
 		<param name="mobsim" value="qsim" />
-		<param name="outputDirectory" value="scenarios/ue5_input_files/myOutput" />
+		<param name="outputDirectory" value="scenarios/ue5_input_files/myOutput/car-case" />
 		<!-- Possible values: failIfDirectoryExists, overwriteExistingFiles, deleteDirectoryIfExists -->
 		<param name="overwriteFiles" value="deleteDirectoryIfExists" />
 		<!-- The type of routing (least cost path) algorithm used, may have the values: Dijkstra, FastDijkstra, AStarLandmarks or FastAStarLandmarks -->
@@ -691,364 +691,364 @@
 
 </config>
 
-2020-12-08T21:18:35,449  INFO ControlerUtils:84 Complete config dump done.
-2020-12-08T21:18:35,449  INFO ControlerUtils:85 Checking consistency of config...
-2020-12-08T21:18:35,449  WARN DrtConfigGroup:216 qsim.endTime should be specified and qsim.simEndtimeInterpretation should be 'onlyUseEndtime' if postponed request rejection is allowed. Otherwise, rejected passengers (who are stuck endlessly waiting for a DRT vehicle) will prevent QSim from stopping. Keep also in mind that not setting an end time may result in agents attempting to travel without vehicles being available.
-2020-12-08T21:18:35,450  WARN DrtConfigGroup:247 Consider increasing global.numberOfThreads to at least the value of drt.numberOfThreads in order to speed up the DRT route update during the replanning phase.
-2020-12-08T21:18:35,450  INFO VspConfigConsistencyCheckerImpl:58 NOT running vsp config consistency check because vsp defaults checking level is set to IGNORE
-2020-12-08T21:18:35,456  INFO ControlerUtils:87 Checking consistency of config done.
-2020-12-08T21:18:35,456  INFO PrepareForSimImpl:115 Network seems to be multimodal. Create car-only network which is handed over to PersonPrepareForSim.
-2020-12-08T21:18:35,459  INFO NetworkImpl:163  node # 1
-2020-12-08T21:18:35,460  INFO NetworkImpl:163  node # 4
-2020-12-08T21:18:35,460  INFO NetworkImpl:163  node # 16
-2020-12-08T21:18:35,460  INFO NetworkImpl:163  node # 64
-2020-12-08T21:18:35,460  INFO NetworkImpl:163  node # 256
-2020-12-08T21:18:35,461  INFO NetworkImpl:163  node # 1024
-2020-12-08T21:18:35,463  INFO NetworkImpl:163  node # 4096
-2020-12-08T21:18:35,464  INFO NetworkImpl:159  link # 1
-2020-12-08T21:18:35,464  INFO NetworkImpl:159  link # 4
-2020-12-08T21:18:35,464  INFO NetworkImpl:159  link # 16
-2020-12-08T21:18:35,465  INFO NetworkImpl:159  link # 64
-2020-12-08T21:18:35,466  INFO NetworkImpl:159  link # 256
-2020-12-08T21:18:35,470  INFO NetworkImpl:159  link # 1024
-2020-12-08T21:18:35,479  INFO NetworkImpl:159  link # 4096
-2020-12-08T21:18:35,503  WARN PrepareForSimImpl:222 'usePersonIdForMissingVehicleId' is deprecated. It will be removed soon.
-2020-12-08T21:18:35,506  INFO Counter:69 [VehiclesImpl] added vehicle # 1
-2020-12-08T21:18:35,507  INFO Counter:69 [VehiclesImpl] added vehicle # 2
-2020-12-08T21:18:35,507  INFO Counter:69 [VehiclesImpl] added vehicle # 4
-2020-12-08T21:18:35,507  INFO Counter:69 [VehiclesImpl] added vehicle # 8
-2020-12-08T21:18:35,507  INFO Counter:69 [VehiclesImpl] added vehicle # 16
-2020-12-08T21:18:35,508  INFO Counter:69 [VehiclesImpl] added vehicle # 32
-2020-12-08T21:18:35,508  INFO Counter:69 [VehiclesImpl] added vehicle # 64
-2020-12-08T21:18:35,509  INFO Counter:69 [VehiclesImpl] added vehicle # 128
-2020-12-08T21:18:35,511  INFO Counter:69 [VehiclesImpl] added vehicle # 256
-2020-12-08T21:18:35,513  INFO Counter:69 [VehiclesImpl] added vehicle # 512
-2020-12-08T21:18:35,515  INFO Counter:69 [VehiclesImpl] added vehicle # 1024
-2020-12-08T21:18:35,518  INFO Counter:69 [VehiclesImpl] added vehicle # 2048
-2020-12-08T21:18:35,549  INFO PreProcessDijkstra:118 nodes in dead ends: 1210 (total nodes: 4477). Done in 11 ms
-2020-12-08T21:18:35,550  WARN PreProcessEuclidean:59 There are links with stored length smaller than their Euclidean distance in this network. Thus, A* cannot guarantee to calculate the least-cost paths between two nodes.
-2020-12-08T21:18:35,552  INFO PreProcessLandmarks:112 Putting landmarks on network...
-2020-12-08T21:18:35,554  INFO LandmarkerPieSlices:96 Filling sectors...
-2020-12-08T21:18:35,564  INFO LandmarkerPieSlices:107 Refining landmarks...
-2020-12-08T21:18:35,565  INFO LandmarkerPieSlices:109 done
-2020-12-08T21:18:35,565  INFO PreProcessLandmarks:115 done in 13 ms
-2020-12-08T21:18:35,565  INFO PreProcessLandmarks:117 Initializing landmarks data
-2020-12-08T21:18:35,569  INFO PreProcessLandmarks:129 Calculating distance from each node to each of the 16 landmarks using 2 threads...
-2020-12-08T21:18:35,571  INFO PreProcessLandmarks:139 wait for landmarks Calculator to finish...
-2020-12-08T21:18:35,740  INFO PreProcessLandmarks:161 done in 170 ms
-2020-12-08T21:18:35,744  INFO NetworkImpl:163  node # 1
-2020-12-08T21:18:35,744  INFO NetworkImpl:163  node # 4
-2020-12-08T21:18:35,744  INFO NetworkImpl:163  node # 16
-2020-12-08T21:18:35,744  INFO NetworkImpl:163  node # 64
-2020-12-08T21:18:35,745  INFO NetworkImpl:163  node # 256
-2020-12-08T21:18:35,745  INFO NetworkImpl:163  node # 1024
-2020-12-08T21:18:35,747  INFO NetworkImpl:163  node # 4096
-2020-12-08T21:18:35,747  INFO NetworkImpl:159  link # 1
-2020-12-08T21:18:35,747  INFO NetworkImpl:159  link # 4
-2020-12-08T21:18:35,747  INFO NetworkImpl:159  link # 16
-2020-12-08T21:18:35,748  INFO NetworkImpl:159  link # 64
-2020-12-08T21:18:35,748  INFO NetworkImpl:159  link # 256
-2020-12-08T21:18:35,751  INFO NetworkImpl:159  link # 1024
-2020-12-08T21:18:35,759  INFO NetworkImpl:159  link # 4096
-2020-12-08T21:18:35,777  WARN RandomizingTimeDistanceTravelDisutilityFactory:112 There will be no routing randomness. The randomization of the travel disutility requires the monetary distance rate to be different than zero. Continuing anyway.
-2020-12-08T21:18:35,777  WARN RandomizingTimeDistanceTravelDisutilityFactory:117 There will be no routing randomness. The randomization of the travel disutility requires the travel time cost rate to be different than zero. Continuing anyway.
-2020-12-08T21:18:35,779  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
-2020-12-08T21:18:35,790  INFO PreProcessDijkstra:118 nodes in dead ends: 1153 (total nodes: 4415). Done in 10 ms
-2020-12-08T21:18:35,790  WARN PreProcessEuclidean:59 There are links with stored length smaller than their Euclidean distance in this network. Thus, A* cannot guarantee to calculate the least-cost paths between two nodes.
-2020-12-08T21:18:35,792  INFO PreProcessLandmarks:112 Putting landmarks on network...
-2020-12-08T21:18:35,793  INFO LandmarkerPieSlices:96 Filling sectors...
-2020-12-08T21:18:35,804  INFO LandmarkerPieSlices:107 Refining landmarks...
-2020-12-08T21:18:35,805  INFO LandmarkerPieSlices:109 done
-2020-12-08T21:18:35,806  INFO PreProcessLandmarks:115 done in 13 ms
-2020-12-08T21:18:35,806  INFO PreProcessLandmarks:117 Initializing landmarks data
-2020-12-08T21:18:35,807  INFO PreProcessLandmarks:129 Calculating distance from each node to each of the 16 landmarks using 2 threads...
-2020-12-08T21:18:35,808  INFO PreProcessLandmarks:139 wait for landmarks Calculator to finish...
-2020-12-08T21:18:35,906  INFO PreProcessLandmarks:161 done in 99 ms
-2020-12-08T21:18:35,912  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
-2020-12-08T21:18:35,935  INFO Counter:69 [PersonPrepareForSim] handled person # 1
-2020-12-08T21:18:35,935  INFO Counter:69 [PersonPrepareForSim] handled person # 2
-2020-12-08T21:18:35,946  INFO Counter:69 [PersonPrepareForSim] handled person # 4
-2020-12-08T21:18:35,953  INFO Counter:69 [PersonPrepareForSim] handled person # 8
-2020-12-08T21:18:35,964  INFO Counter:69 [PersonPrepareForSim] handled person # 16
-2020-12-08T21:18:35,982  INFO Counter:69 [PersonPrepareForSim] handled person # 32
-2020-12-08T21:18:36,028  INFO Counter:69 [PersonPrepareForSim] handled person # 64
-2020-12-08T21:18:36,089  INFO Counter:69 [PersonPrepareForSim] handled person # 128
-2020-12-08T21:18:36,186  INFO Counter:69 [PersonPrepareForSim] handled person # 256
-2020-12-08T21:18:36,330  INFO Counter:69 [PersonPrepareForSim] handled person # 512
-2020-12-08T21:18:36,502  INFO Counter:69 [PersonPrepareForSim] handled person # 1024
-2020-12-08T21:18:36,793  INFO Counter:69 [PersonPrepareForSim] handled person # 2048
-2020-12-08T21:18:36,827  INFO Counter:74 [PersonPrepareForSim] handled person # 2123
-2020-12-08T21:18:36,830  INFO AbstractController:124 ###################################################
-2020-12-08T21:18:36,830  INFO AbstractController:125 ### ITERATION 0 BEGINS
-2020-12-08T21:18:36,831  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.analysis.LegHistogramListener
-2020-12-08T21:18:36,831  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.analysis.LinkStatsControlerListener
-2020-12-08T21:18:36,831  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.core.replanning.ReplanningContextImpl
-2020-12-08T21:18:36,831  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.core.scoring.ScoringFunctionsForPopulation$1
-2020-12-08T21:18:36,843  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.core.scoring.ExperiencedPlansServiceImpl$1
-2020-12-08T21:18:36,844  INFO ControlerListenerManagerImpl:148 [it.0] all ControlerIterationStartsListeners called.
-2020-12-08T21:18:36,845  INFO ControlerListenerManagerImpl:224 calling notifyBeforeMobsim on org.matsim.core.controler.corelisteners.EventsHandlingImpl
-2020-12-08T21:18:36,845  INFO EventsManagerImpl:184 resetting Event-Handlers
-2020-12-08T21:18:36,845  INFO EventsManagerImpl:191   org.matsim.core.trafficmonitoring.TravelTimeCalculator
-2020-12-08T21:18:36,848  INFO EventsManagerImpl:191   org.matsim.core.scoring.EventsToLegsAndActivities
-2020-12-08T21:18:36,848  INFO EventsManagerImpl:191   org.matsim.analysis.VolumesAnalyzer
-2020-12-08T21:18:36,848  INFO EventsManagerImpl:191   org.matsim.core.scoring.ScoringFunctionsForPopulation
-2020-12-08T21:18:36,849  INFO EventsManagerImpl:191   org.matsim.analysis.LegHistogram
-2020-12-08T21:18:36,849  INFO EventsManagerImpl:191   org.matsim.analysis.CalcLegTimes
-2020-12-08T21:18:36,849  INFO EventsManagerImpl:191   org.matsim.contrib.av.robotaxi.fares.drt.DrtFareHandler
-2020-12-08T21:18:36,852  INFO EventsManagerImpl:158 adding Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
-2020-12-08T21:18:36,852  INFO EventsManagerImpl:162   org.matsim.core.events.algorithms.EventWriter
-2020-12-08T21:18:36,852  INFO EventsManagerImpl:162   org.matsim.core.events.handler.BasicEventHandler
-2020-12-08T21:18:36,852  INFO EventsManagerImpl:221     > org.matsim.api.core.v01.events.Event
-2020-12-08T21:18:36,852  INFO EventsManagerImpl:170 
-2020-12-08T21:18:36,852  INFO EventsManagerImpl:158 adding Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
-2020-12-08T21:18:36,852  INFO EventsManagerImpl:162   org.matsim.core.events.algorithms.EventWriter
-2020-12-08T21:18:36,853  INFO EventsManagerImpl:162   org.matsim.core.events.handler.BasicEventHandler
-2020-12-08T21:18:36,853  INFO EventsManagerImpl:221     > org.matsim.api.core.v01.events.Event
-2020-12-08T21:18:36,853  INFO EventsManagerImpl:170 
-2020-12-08T21:18:36,853  INFO ControlerListenerManagerImpl:224 calling notifyBeforeMobsim on org.matsim.core.controler.corelisteners.PlansDumpingImpl
-2020-12-08T21:18:36,853  INFO PlansDumpingImpl:76 dumping plans...
-2020-12-08T21:18:36,859  WARN ObjectAttributesConverter:77 No AttributeConverter found for class java.util.Collections$UnmodifiableMap. Not all attribute values can be converted.
-2020-12-08T21:18:36,860  INFO Counter:69 [PopulationWriter] dumped person # 1
-2020-12-08T21:18:36,860  INFO Counter:69 [PopulationWriter] dumped person # 2
-2020-12-08T21:18:36,861  INFO Counter:69 [PopulationWriter] dumped person # 4
-2020-12-08T21:18:36,862  INFO Counter:69 [PopulationWriter] dumped person # 8
-2020-12-08T21:18:36,864  INFO Counter:69 [PopulationWriter] dumped person # 16
-2020-12-08T21:18:36,868  INFO Counter:69 [PopulationWriter] dumped person # 32
-2020-12-08T21:18:36,875  INFO Counter:69 [PopulationWriter] dumped person # 64
-2020-12-08T21:18:36,885  INFO Counter:69 [PopulationWriter] dumped person # 128
-2020-12-08T21:18:36,902  INFO Counter:69 [PopulationWriter] dumped person # 256
-2020-12-08T21:18:36,923  INFO Counter:69 [PopulationWriter] dumped person # 512
-2020-12-08T21:18:36,956  INFO Counter:69 [PopulationWriter] dumped person # 1024
-2020-12-08T21:18:37,024  INFO Counter:69 [PopulationWriter] dumped person # 2048
-2020-12-08T21:18:37,032  INFO PopulationWriter:144 Population written to: scenarios/ue5_input_files/myOutput/ITERS/it.0/car-case.0.plans.xml.gz
-2020-12-08T21:18:37,035  INFO Counter:74 [PopulationWriter] dumped person # 2123
-2020-12-08T21:18:37,036  INFO PlansDumpingImpl:93 finished plans dump.
-2020-12-08T21:18:37,036  INFO ControlerListenerManagerImpl:229 calling notifyBeforeMobsim on org.matsim.core.population.VspPlansCleaner
-2020-12-08T21:18:37,041  INFO ControlerListenerManagerImpl:232 [it.0] all ControlerBeforeMobsimListeners called.
-2020-12-08T21:18:37,042  INFO PrepareForMobsimImpl:83 Network seems to be multimodal. Create car-only network which is handed over to PersonPrepareForSim.
-2020-12-08T21:18:37,042  INFO NetworkImpl:163  node # 1
-2020-12-08T21:18:37,042  INFO NetworkImpl:163  node # 4
-2020-12-08T21:18:37,042  INFO NetworkImpl:163  node # 16
-2020-12-08T21:18:37,042  INFO NetworkImpl:163  node # 64
-2020-12-08T21:18:37,043  INFO NetworkImpl:163  node # 256
-2020-12-08T21:18:37,043  INFO NetworkImpl:163  node # 1024
-2020-12-08T21:18:37,044  INFO NetworkImpl:163  node # 4096
-2020-12-08T21:18:37,044  INFO NetworkImpl:159  link # 1
-2020-12-08T21:18:37,044  INFO NetworkImpl:159  link # 4
-2020-12-08T21:18:37,044  INFO NetworkImpl:159  link # 16
-2020-12-08T21:18:37,044  INFO NetworkImpl:159  link # 64
-2020-12-08T21:18:37,045  INFO NetworkImpl:159  link # 256
-2020-12-08T21:18:37,046  INFO NetworkImpl:159  link # 1024
-2020-12-08T21:18:37,054  INFO NetworkImpl:159  link # 4096
-2020-12-08T21:18:37,071  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
-2020-12-08T21:18:37,076  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
-2020-12-08T21:18:37,080  INFO Counter:69 [PersonPrepareForSim] handled person # 1
-2020-12-08T21:18:37,080  INFO Counter:69 [PersonPrepareForSim] handled person # 2
-2020-12-08T21:18:37,081  INFO Counter:69 [PersonPrepareForSim] handled person # 4
-2020-12-08T21:18:37,081  INFO Counter:69 [PersonPrepareForSim] handled person # 8
-2020-12-08T21:18:37,081  INFO Counter:69 [PersonPrepareForSim] handled person # 16
-2020-12-08T21:18:37,081  INFO Counter:69 [PersonPrepareForSim] handled person # 32
-2020-12-08T21:18:37,081  INFO Counter:69 [PersonPrepareForSim] handled person # 64
-2020-12-08T21:18:37,081  INFO Counter:69 [PersonPrepareForSim] handled person # 128
-2020-12-08T21:18:37,081  INFO Counter:69 [PersonPrepareForSim] handled person # 256
-2020-12-08T21:18:37,082  INFO Counter:69 [PersonPrepareForSim] handled person # 512
-2020-12-08T21:18:37,083  INFO Counter:69 [PersonPrepareForSim] handled person # 1024
-2020-12-08T21:18:37,094  INFO Counter:69 [PersonPrepareForSim] handled person # 2048
-2020-12-08T21:18:37,095  INFO Counter:74 [PersonPrepareForSim] handled person # 2123
-2020-12-08T21:18:37,146  INFO MobsimListenerManager:49 calling addQueueSimulationListener
-2020-12-08T21:18:37,146  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
-2020-12-08T21:18:37,146  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.vis.snapshotwriters.SnapshotWriterManager
-2020-12-08T21:18:37,146  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimAfterSimStepListener
-2020-12-08T21:18:37,146  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeCleanupListener
-2020-12-08T21:18:37,146  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimInitializedListener
-2020-12-08T21:18:37,182  INFO QSimProvider:102 Added MobsimEngine class org.matsim.core.mobsim.qsim.ActivityEngineDefaultImpl
-2020-12-08T21:18:37,182  INFO QSimProvider:108 Added Activityhandler class org.matsim.core.mobsim.qsim.ActivityEngineDefaultImpl
-2020-12-08T21:18:37,182  INFO QSimProvider:114 Added DepartureHandler class org.matsim.core.mobsim.qsim.qnetsimengine.VehicularDepartureHandler
-2020-12-08T21:18:37,182  INFO QSimProvider:102 Added MobsimEngine class org.matsim.core.mobsim.qsim.qnetsimengine.QNetsimEngineWithThreadpool
-2020-12-08T21:18:37,182  INFO QSimProvider:102 Added MobsimEngine class org.matsim.core.mobsim.qsim.DefaultTeleportationEngine
-2020-12-08T21:18:37,182  INFO QSimProvider:114 Added DepartureHandler class org.matsim.core.mobsim.qsim.DefaultTeleportationEngine
-2020-12-08T21:18:37,183  INFO QSimProvider:120 Added AgentSource class org.matsim.core.mobsim.qsim.agents.PopulationAgentSource
-2020-12-08T21:18:37,183  INFO MobsimListenerManager:49 calling addQueueSimulationListener
-2020-12-08T21:18:37,183  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.qsim.messagequeueengine.MessageQueueEngine
-2020-12-08T21:18:37,183  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
-2020-12-08T21:18:37,183  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeSimStepListener
-2020-12-08T21:18:37,183  INFO QSimProvider:126 Added MobsimListener class org.matsim.core.mobsim.qsim.messagequeueengine.MessageQueueEngine
-2020-12-08T21:18:37,188  INFO PopulationUtils:1194 adding scenario element for allpersons container
-2020-12-08T21:18:37,188  INFO PopulationImpl:105  person # 1
-2020-12-08T21:18:37,188  INFO PopulationImpl:105  person # 4
-2020-12-08T21:18:37,188  INFO PopulationImpl:105  person # 16
-2020-12-08T21:18:37,189  INFO PopulationImpl:105  person # 64
-2020-12-08T21:18:37,190  INFO PopulationImpl:105  person # 256
-2020-12-08T21:18:37,193  INFO PopulationImpl:105  person # 1024
-2020-12-08T21:18:37,196  INFO VehicleUtils:328 adding scenario element for allvehicles container
-2020-12-08T21:18:37,196  INFO Counter:69 [VehiclesImpl] added vehicle # 1
-2020-12-08T21:18:37,196  INFO Counter:69 [VehiclesImpl] added vehicle # 2
-2020-12-08T21:18:37,196  INFO Counter:69 [VehiclesImpl] added vehicle # 4
-2020-12-08T21:18:37,196  INFO Counter:69 [VehiclesImpl] added vehicle # 8
-2020-12-08T21:18:37,196  INFO Counter:69 [VehiclesImpl] added vehicle # 16
-2020-12-08T21:18:37,196  INFO Counter:69 [VehiclesImpl] added vehicle # 32
-2020-12-08T21:18:37,197  INFO Counter:69 [VehiclesImpl] added vehicle # 64
-2020-12-08T21:18:37,197  INFO Counter:69 [VehiclesImpl] added vehicle # 128
-2020-12-08T21:18:37,198  INFO Counter:69 [VehiclesImpl] added vehicle # 256
-2020-12-08T21:18:37,200  INFO Counter:69 [VehiclesImpl] added vehicle # 512
-2020-12-08T21:18:37,203  INFO Counter:69 [VehiclesImpl] added vehicle # 1024
-2020-12-08T21:18:37,206  INFO Counter:69 [VehiclesImpl] added vehicle # 2048
-2020-12-08T21:18:37,213  INFO AbstractQNetsimEngine:427 Assigned 4477 nodes and 10729 links to QSimEngineRunner #0
-2020-12-08T21:18:37,221  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 00:00:00 : #links=0 #nodes=0
-2020-12-08T21:18:37,226  INFO QSim:549 SIMULATION (NEW QSim) AT 00:00:00 : #Veh=2123 lost=0 simT=0.0s realT=0s; (s/r): 0.0
-2020-12-08T21:18:37,414  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 01:00:00 : #links=0 #nodes=0
-2020-12-08T21:18:37,415  INFO QSim:549 SIMULATION (NEW QSim) AT 01:00:00 : #Veh=2123 lost=0 simT=3600.0s realT=0s; (s/r): Infinity
-2020-12-08T21:18:37,524  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 02:00:00 : #links=0 #nodes=0
-2020-12-08T21:18:37,524  INFO QSim:549 SIMULATION (NEW QSim) AT 02:00:00 : #Veh=2123 lost=0 simT=7200.0s realT=0s; (s/r): Infinity
-2020-12-08T21:18:37,630  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 03:00:00 : #links=0 #nodes=0
-2020-12-08T21:18:37,630  INFO QSim:549 SIMULATION (NEW QSim) AT 03:00:00 : #Veh=2123 lost=0 simT=10800.0s realT=0s; (s/r): Infinity
-2020-12-08T21:18:37,726  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 04:00:00 : #links=0 #nodes=0
-2020-12-08T21:18:37,726  INFO QSim:549 SIMULATION (NEW QSim) AT 04:00:00 : #Veh=2123 lost=0 simT=14400.0s realT=0s; (s/r): Infinity
-2020-12-08T21:18:37,841  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 05:00:00 : #links=0 #nodes=0
-2020-12-08T21:18:37,841  INFO QSim:549 SIMULATION (NEW QSim) AT 05:00:00 : #Veh=2123 lost=0 simT=18000.0s realT=0s; (s/r): Infinity
-2020-12-08T21:18:37,874  INFO EventsManagerImpl:135  event # 1
-2020-12-08T21:18:37,876  INFO EventsManagerImpl:135  event # 4
-2020-12-08T21:18:37,881  INFO EventsManagerImpl:135  event # 16
-2020-12-08T21:18:37,889  INFO EventsManagerImpl:135  event # 64
-2020-12-08T21:18:37,930  INFO EventsManagerImpl:135  event # 256
-2020-12-08T21:18:37,977  INFO EventsManagerImpl:135  event # 1024
-2020-12-08T21:18:38,007  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 06:00:00 : #links=13 #nodes=0
-2020-12-08T21:18:38,007  INFO QSim:549 SIMULATION (NEW QSim) AT 06:00:00 : #Veh=2123 lost=0 simT=21600.0s realT=0s; (s/r): Infinity
-2020-12-08T21:18:38,057  INFO EventsManagerImpl:135  event # 4096
-2020-12-08T21:18:38,213  INFO EventsManagerImpl:135  event # 16384
-2020-12-08T21:18:38,436  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 07:00:00 : #links=106 #nodes=13
-2020-12-08T21:18:38,436  INFO QSim:549 SIMULATION (NEW QSim) AT 07:00:00 : #Veh=2123 lost=0 simT=25200.0s realT=1s; (s/r): 25200.0
-2020-12-08T21:18:38,498  INFO EventsManagerImpl:135  event # 65536
-2020-12-08T21:18:38,814  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 08:00:00 : #links=88 #nodes=23
-2020-12-08T21:18:38,814  INFO QSim:549 SIMULATION (NEW QSim) AT 08:00:00 : #Veh=2123 lost=0 simT=28800.0s realT=1s; (s/r): 28800.0
-2020-12-08T21:18:39,030  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 09:00:00 : #links=18 #nodes=1
-2020-12-08T21:18:39,030  INFO QSim:549 SIMULATION (NEW QSim) AT 09:00:00 : #Veh=2123 lost=0 simT=32400.0s realT=1s; (s/r): 32400.0
-2020-12-08T21:18:39,127  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 10:00:00 : #links=0 #nodes=0
-2020-12-08T21:18:39,128  INFO QSim:549 SIMULATION (NEW QSim) AT 10:00:00 : #Veh=2123 lost=0 simT=36000.0s realT=1s; (s/r): 36000.0
-2020-12-08T21:18:39,222  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 11:00:00 : #links=0 #nodes=0
-2020-12-08T21:18:39,222  INFO QSim:549 SIMULATION (NEW QSim) AT 11:00:00 : #Veh=2123 lost=0 simT=39600.0s realT=2s; (s/r): 19800.0
-2020-12-08T21:18:39,322  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 12:00:00 : #links=0 #nodes=0
-2020-12-08T21:18:39,322  INFO QSim:549 SIMULATION (NEW QSim) AT 12:00:00 : #Veh=2123 lost=0 simT=43200.0s realT=2s; (s/r): 21600.0
-2020-12-08T21:18:39,416  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 13:00:00 : #links=0 #nodes=0
-2020-12-08T21:18:39,416  INFO QSim:549 SIMULATION (NEW QSim) AT 13:00:00 : #Veh=2123 lost=0 simT=46800.0s realT=2s; (s/r): 23400.0
-2020-12-08T21:18:39,511  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 14:00:00 : #links=4 #nodes=1
-2020-12-08T21:18:39,511  INFO QSim:549 SIMULATION (NEW QSim) AT 14:00:00 : #Veh=2121 lost=0 simT=50400.0s realT=2s; (s/r): 25200.0
-2020-12-08T21:18:39,705  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 15:00:00 : #links=94 #nodes=16
-2020-12-08T21:18:39,705  INFO QSim:549 SIMULATION (NEW QSim) AT 15:00:00 : #Veh=1872 lost=0 simT=54000.0s realT=2s; (s/r): 27000.0
-2020-12-08T21:18:39,938  INFO EventsManagerImpl:135  event # 262144
-2020-12-08T21:18:40,028  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 16:00:00 : #links=110 #nodes=22
-2020-12-08T21:18:40,028  INFO QSim:549 SIMULATION (NEW QSim) AT 16:00:00 : #Veh=1017 lost=0 simT=57600.0s realT=2s; (s/r): 28800.0
-2020-12-08T21:18:40,309  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 17:00:00 : #links=46 #nodes=7
-2020-12-08T21:18:40,309  INFO QSim:549 SIMULATION (NEW QSim) AT 17:00:00 : #Veh=269 lost=0 simT=61200.0s realT=3s; (s/r): 20400.0
-2020-12-08T21:18:40,436  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 18:00:00 : #links=9 #nodes=2
-2020-12-08T21:18:40,436  INFO QSim:549 SIMULATION (NEW QSim) AT 18:00:00 : #Veh=101 lost=0 simT=64800.0s realT=3s; (s/r): 21600.0
-2020-12-08T21:18:40,551  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 19:00:00 : #links=1 #nodes=0
-2020-12-08T21:18:40,551  INFO QSim:549 SIMULATION (NEW QSim) AT 19:00:00 : #Veh=28 lost=0 simT=68400.0s realT=3s; (s/r): 22800.0
-2020-12-08T21:18:40,655  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 20:00:00 : #links=1 #nodes=1
-2020-12-08T21:18:40,655  INFO QSim:549 SIMULATION (NEW QSim) AT 20:00:00 : #Veh=1 lost=0 simT=72000.0s realT=3s; (s/r): 24000.0
-2020-12-08T21:18:40,669  INFO AbstractController$9:221 ### ITERATION 0 fires after mobsim event
-2020-12-08T21:18:40,669  INFO ControlerListenerManagerImpl:248 calling notifyAfterMobsim on org.matsim.analysis.LegTimesControlerListener
-2020-12-08T21:18:40,670  INFO Gbl:191 Thread performance: Thread=class org.matsim.core.events.SimStepParallelEventsManagerImpl$ProcessEventsRunnable0  cpu-time=1.725849sec
-2020-12-08T21:18:40,673  INFO LegTimesControlerListener:50 [0] average trip (probably: leg) duration is: 392 seconds = 00:06:32
-2020-12-08T21:18:40,673  INFO ControlerListenerManagerImpl:248 calling notifyAfterMobsim on org.matsim.core.scoring.EventsToActivities$1
-2020-12-08T21:18:40,677  INFO ControlerListenerManagerImpl:251 [it.0] all ControlerAfterMobsimListeners called.
-2020-12-08T21:18:40,678  INFO AbstractController$4:150 ### ITERATION 0 fires scoring event
-2020-12-08T21:18:40,678  INFO ControlerListenerManagerImpl:183 calling notifyScoring on org.matsim.core.scoring.PlansScoringImpl
-2020-12-08T21:18:40,690  INFO NewScoreAssignerImpl:57 it: 0 msaStart: null
-2020-12-08T21:18:40,691  INFO ControlerListenerManagerImpl:194 [it.0] all ControlerScoringListeners called.
-2020-12-08T21:18:40,691  INFO AbstractController$5:158 ### ITERATION 0 fires iteration end event
-2020-12-08T21:18:40,692  INFO ControlerListenerManagerImpl:160 calling notifyIterationEnds on org.matsim.core.controler.corelisteners.EventsHandlingImpl
-2020-12-08T21:18:40,694  INFO EventsManagerImpl:175 removing Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
-2020-12-08T21:18:40,694  INFO EventsManagerImpl:175 removing Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
-2020-12-08T21:18:40,695  INFO ControlerListenerManagerImpl:160 calling notifyIterationEnds on org.matsim.core.scoring.PlansScoringImpl
-2020-12-08T21:18:40,695  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.counts.CountsControlerListener
-2020-12-08T21:18:40,695  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.analysis.ModeStatsControlerListener
-2020-12-08T21:18:40,699  INFO ModeStatsControlerListener:142 Mode shares over all 5214.0 trips found. MainModeIdentifier: class org.matsim.core.router.RoutingModeMainModeIdentifier
-2020-12-08T21:18:40,700  INFO ModeStatsControlerListener:149 -- mode share of mode bike = 0.0
-2020-12-08T21:18:40,700  INFO ModeStatsControlerListener:149 -- mode share of mode car = 1.0
-2020-12-08T21:18:40,700  INFO ModeStatsControlerListener:149 -- mode share of mode drt = 0.0
-2020-12-08T21:18:40,700  INFO ModeStatsControlerListener:149 -- mode share of mode other = 0.0
-2020-12-08T21:18:40,700  INFO ModeStatsControlerListener:149 -- mode share of mode pt = 0.0
-2020-12-08T21:18:40,700  INFO ModeStatsControlerListener:149 -- mode share of mode ride = 0.0
-2020-12-08T21:18:40,700  INFO ModeStatsControlerListener:149 -- mode share of mode walk = 0.0
-2020-12-08T21:18:40,700  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.analysis.ScoreStatsControlerListener
-2020-12-08T21:18:40,701  INFO ScoreStatsControlerListener:181 -- avg. score of the executed plan of each agent: 86.70280995296349
-2020-12-08T21:18:40,701  INFO ScoreStatsControlerListener:182 -- avg. score of the worst plan of each agent: 86.70280995296349
-2020-12-08T21:18:40,701  INFO ScoreStatsControlerListener:183 -- avg. of the avg. plan score per agent: 86.70280995296349
-2020-12-08T21:18:40,702  INFO ScoreStatsControlerListener:184 -- avg. score of the best plan of each agent: 86.70280995296349
-2020-12-08T21:18:40,704  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.analysis.IterationTravelStatsControlerListener
-2020-12-08T21:18:40,724  INFO TravelDistanceStats:143 -- average leg distance per plan (executed plans only): 5553.25401961015 meters
-2020-12-08T21:18:40,724  INFO TravelDistanceStats:144 average leg distance per Person (executed plans only): 13638.561685467415 meters (statistic on all 5214 legs which have a finite distance)
-2020-12-08T21:18:40,724  INFO TravelDistanceStats:145 -- average trip distance per plan (executed plans only): 5553.25401961015 meters
-2020-12-08T21:18:40,724  INFO TravelDistanceStats:146 average trip distance per Person (executed plans only): 13638.561685467415 meters (statistic on all 5214 trips which have a finite distance)
-2020-12-08T21:18:40,725  INFO TravelDistanceStats:147 (TravelDistanceStats takes an average over all legs where the simulation reports travelled (network) distances
-2020-12-08T21:18:40,725  INFO TravelDistanceStats:148 (and teleported legs whose route contains a distance.)
-2020-12-08T21:18:40,905  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.analysis.LegHistogramListener
-2020-12-08T21:18:40,911  INFO LegHistogramListener:72 number of legs:	5214	100%
-2020-12-08T21:18:40,912  INFO LegHistogramListener:79 number of car legs:	5214	100.0%
-2020-12-08T21:18:42,358  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.analysis.LinkStatsControlerListener
-2020-12-08T21:18:42,359  INFO ControlerListenerManagerImpl:171 [it.0] all ControlerIterationEndsListeners called.
-2020-12-08T21:18:42,622  INFO AbstractController:168 ### ITERATION 0 ENDS
-2020-12-08T21:18:42,622  INFO AbstractController:169 ###################################################
-2020-12-08T21:18:42,622  INFO MatsimRuntimeModifications:79 S H U T D O W N   ---   start shutdown.
-2020-12-08T21:18:42,622  INFO ControlerListenerManagerImpl:121 calling notifyShutdown on org.matsim.core.controler.corelisteners.EventsHandlingImpl
-2020-12-08T21:18:42,622  INFO ControlerListenerManagerImpl:121 calling notifyShutdown on org.matsim.core.controler.corelisteners.DumpDataAtEndImpl
-2020-12-08T21:18:42,624  WARN ObjectAttributesConverter:77 No AttributeConverter found for class java.util.Collections$UnmodifiableMap. Not all attribute values can be converted.
-2020-12-08T21:18:42,625  INFO Counter:69 [PopulationWriter] dumped person # 1
-2020-12-08T21:18:42,625  INFO Counter:69 [PopulationWriter] dumped person # 2
-2020-12-08T21:18:42,626  INFO Counter:69 [PopulationWriter] dumped person # 4
-2020-12-08T21:18:42,626  INFO Counter:69 [PopulationWriter] dumped person # 8
-2020-12-08T21:18:42,627  INFO Counter:69 [PopulationWriter] dumped person # 16
-2020-12-08T21:18:42,628  INFO Counter:69 [PopulationWriter] dumped person # 32
-2020-12-08T21:18:42,631  INFO Counter:69 [PopulationWriter] dumped person # 64
-2020-12-08T21:18:42,635  INFO Counter:69 [PopulationWriter] dumped person # 128
-2020-12-08T21:18:42,642  INFO Counter:69 [PopulationWriter] dumped person # 256
-2020-12-08T21:18:42,656  INFO Counter:69 [PopulationWriter] dumped person # 512
-2020-12-08T21:18:42,685  INFO Counter:69 [PopulationWriter] dumped person # 1024
-2020-12-08T21:18:42,741  INFO Counter:69 [PopulationWriter] dumped person # 2048
-2020-12-08T21:18:42,744  INFO PopulationWriter:144 Population written to: scenarios/ue5_input_files/myOutput/car-case.output_plans.xml.gz
-2020-12-08T21:18:42,746  INFO Counter:74 [PopulationWriter] dumped person # 2123
-2020-12-08T21:18:42,747  INFO NetworkWriter:69 Writing network to file: scenarios/ue5_input_files/myOutput/car-case.output_network.xml.gz...
-2020-12-08T21:18:42,856  INFO NetworkWriter:72 done.
-2020-12-08T21:18:42,861  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,863  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,866  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,869  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,874  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,876  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,878  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,881  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,883  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,885  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,887  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,889  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,895  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,897  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,899  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,901  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,906  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,908  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,911  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,913  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,919  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,921  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,923  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,925  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,927  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,929  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,931  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,933  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
-2020-12-08T21:18:42,938  INFO MatsimVehicleWriter:54 about to write vehicles to: scenarios/ue5_input_files/myOutput/car-case.output_vehicles.xml.gz
-2020-12-08T21:18:42,938  INFO VehicleWriterV2:63 about to write vehicles to: scenarios/ue5_input_files/myOutput/car-case.output_vehicles.xml.gz
-2020-12-08T21:18:42,944  INFO MatsimVehicleWriter:54 about to write vehicles to: scenarios/ue5_input_files/myOutput/car-case.output_allVehicles.xml.gz
-2020-12-08T21:18:42,944  INFO VehicleWriterV2:63 about to write vehicles to: scenarios/ue5_input_files/myOutput/car-case.output_allVehicles.xml.gz
-2020-12-08T21:18:42,948  INFO HouseholdsWriterV10:66 about to write  households to: scenarios/ue5_input_files/myOutput/car-case.output_households.xml.gz
-2020-12-08T21:18:42,949  INFO Counter:74 [HouseholdsWriter] wrote household # 0
-2020-12-08T21:18:42,979  INFO ControlerListenerManagerImpl:126 calling notifyShutdown on org.matsim.analysis.ModeStatsControlerListener
-2020-12-08T21:18:42,979  INFO ControlerListenerManagerImpl:126 calling notifyShutdown on org.matsim.analysis.ScoreStatsControlerListener
-2020-12-08T21:18:42,979  INFO ControlerListenerManagerImpl:126 calling notifyShutdown on org.matsim.analysis.IterationTravelStatsControlerListener
-2020-12-08T21:18:43,358  INFO IterationTravelStatsControlerListener:100 Writing all Person and Attributes to personscsv
-2020-12-08T21:18:43,377  INFO IterationTravelStatsControlerListener:134 ...done
-2020-12-08T21:18:43,377  INFO ControlerListenerManagerImpl:129 all ControlerShutdownListeners called.
-2020-12-08T21:18:43,378  INFO MatsimRuntimeModifications:102 S H U T D O W N   ---   shutdown completed.
-2020-12-08T21:18:43,378  INFO OutputDirectoryLogging:170 closing the logfile, i.e. messages sent to the logger after this message are not written to the logfile.
+2020-12-08T21:24:53,128  INFO ControlerUtils:84 Complete config dump done.
+2020-12-08T21:24:53,129  INFO ControlerUtils:85 Checking consistency of config...
+2020-12-08T21:24:53,129  WARN DrtConfigGroup:216 qsim.endTime should be specified and qsim.simEndtimeInterpretation should be 'onlyUseEndtime' if postponed request rejection is allowed. Otherwise, rejected passengers (who are stuck endlessly waiting for a DRT vehicle) will prevent QSim from stopping. Keep also in mind that not setting an end time may result in agents attempting to travel without vehicles being available.
+2020-12-08T21:24:53,129  WARN DrtConfigGroup:247 Consider increasing global.numberOfThreads to at least the value of drt.numberOfThreads in order to speed up the DRT route update during the replanning phase.
+2020-12-08T21:24:53,130  INFO VspConfigConsistencyCheckerImpl:58 NOT running vsp config consistency check because vsp defaults checking level is set to IGNORE
+2020-12-08T21:24:53,136  INFO ControlerUtils:87 Checking consistency of config done.
+2020-12-08T21:24:53,136  INFO PrepareForSimImpl:115 Network seems to be multimodal. Create car-only network which is handed over to PersonPrepareForSim.
+2020-12-08T21:24:53,139  INFO NetworkImpl:163  node # 1
+2020-12-08T21:24:53,139  INFO NetworkImpl:163  node # 4
+2020-12-08T21:24:53,139  INFO NetworkImpl:163  node # 16
+2020-12-08T21:24:53,139  INFO NetworkImpl:163  node # 64
+2020-12-08T21:24:53,140  INFO NetworkImpl:163  node # 256
+2020-12-08T21:24:53,141  INFO NetworkImpl:163  node # 1024
+2020-12-08T21:24:53,144  INFO NetworkImpl:163  node # 4096
+2020-12-08T21:24:53,146  INFO NetworkImpl:159  link # 1
+2020-12-08T21:24:53,146  INFO NetworkImpl:159  link # 4
+2020-12-08T21:24:53,146  INFO NetworkImpl:159  link # 16
+2020-12-08T21:24:53,147  INFO NetworkImpl:159  link # 64
+2020-12-08T21:24:53,148  INFO NetworkImpl:159  link # 256
+2020-12-08T21:24:53,151  INFO NetworkImpl:159  link # 1024
+2020-12-08T21:24:53,161  INFO NetworkImpl:159  link # 4096
+2020-12-08T21:24:53,190  WARN PrepareForSimImpl:222 'usePersonIdForMissingVehicleId' is deprecated. It will be removed soon.
+2020-12-08T21:24:53,195  INFO Counter:69 [VehiclesImpl] added vehicle # 1
+2020-12-08T21:24:53,195  INFO Counter:69 [VehiclesImpl] added vehicle # 2
+2020-12-08T21:24:53,196  INFO Counter:69 [VehiclesImpl] added vehicle # 4
+2020-12-08T21:24:53,196  INFO Counter:69 [VehiclesImpl] added vehicle # 8
+2020-12-08T21:24:53,196  INFO Counter:69 [VehiclesImpl] added vehicle # 16
+2020-12-08T21:24:53,197  INFO Counter:69 [VehiclesImpl] added vehicle # 32
+2020-12-08T21:24:53,198  INFO Counter:69 [VehiclesImpl] added vehicle # 64
+2020-12-08T21:24:53,199  INFO Counter:69 [VehiclesImpl] added vehicle # 128
+2020-12-08T21:24:53,200  INFO Counter:69 [VehiclesImpl] added vehicle # 256
+2020-12-08T21:24:53,202  INFO Counter:69 [VehiclesImpl] added vehicle # 512
+2020-12-08T21:24:53,206  INFO Counter:69 [VehiclesImpl] added vehicle # 1024
+2020-12-08T21:24:53,210  INFO Counter:69 [VehiclesImpl] added vehicle # 2048
+2020-12-08T21:24:53,247  INFO PreProcessDijkstra:118 nodes in dead ends: 1210 (total nodes: 4477). Done in 16 ms
+2020-12-08T21:24:53,247  WARN PreProcessEuclidean:59 There are links with stored length smaller than their Euclidean distance in this network. Thus, A* cannot guarantee to calculate the least-cost paths between two nodes.
+2020-12-08T21:24:53,250  INFO PreProcessLandmarks:112 Putting landmarks on network...
+2020-12-08T21:24:53,252  INFO LandmarkerPieSlices:96 Filling sectors...
+2020-12-08T21:24:53,266  INFO LandmarkerPieSlices:107 Refining landmarks...
+2020-12-08T21:24:53,267  INFO LandmarkerPieSlices:109 done
+2020-12-08T21:24:53,268  INFO PreProcessLandmarks:115 done in 18 ms
+2020-12-08T21:24:53,268  INFO PreProcessLandmarks:117 Initializing landmarks data
+2020-12-08T21:24:53,271  INFO PreProcessLandmarks:129 Calculating distance from each node to each of the 16 landmarks using 2 threads...
+2020-12-08T21:24:53,273  INFO PreProcessLandmarks:139 wait for landmarks Calculator to finish...
+2020-12-08T21:24:53,445  INFO PreProcessLandmarks:161 done in 172 ms
+2020-12-08T21:24:53,448  INFO NetworkImpl:163  node # 1
+2020-12-08T21:24:53,448  INFO NetworkImpl:163  node # 4
+2020-12-08T21:24:53,448  INFO NetworkImpl:163  node # 16
+2020-12-08T21:24:53,448  INFO NetworkImpl:163  node # 64
+2020-12-08T21:24:53,448  INFO NetworkImpl:163  node # 256
+2020-12-08T21:24:53,449  INFO NetworkImpl:163  node # 1024
+2020-12-08T21:24:53,450  INFO NetworkImpl:163  node # 4096
+2020-12-08T21:24:53,450  INFO NetworkImpl:159  link # 1
+2020-12-08T21:24:53,451  INFO NetworkImpl:159  link # 4
+2020-12-08T21:24:53,452  INFO NetworkImpl:159  link # 16
+2020-12-08T21:24:53,452  INFO NetworkImpl:159  link # 64
+2020-12-08T21:24:53,453  INFO NetworkImpl:159  link # 256
+2020-12-08T21:24:53,454  INFO NetworkImpl:159  link # 1024
+2020-12-08T21:24:53,462  INFO NetworkImpl:159  link # 4096
+2020-12-08T21:24:53,481  WARN RandomizingTimeDistanceTravelDisutilityFactory:112 There will be no routing randomness. The randomization of the travel disutility requires the monetary distance rate to be different than zero. Continuing anyway.
+2020-12-08T21:24:53,481  WARN RandomizingTimeDistanceTravelDisutilityFactory:117 There will be no routing randomness. The randomization of the travel disutility requires the travel time cost rate to be different than zero. Continuing anyway.
+2020-12-08T21:24:53,482  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
+2020-12-08T21:24:53,490  INFO PreProcessDijkstra:118 nodes in dead ends: 1153 (total nodes: 4415). Done in 7 ms
+2020-12-08T21:24:53,491  WARN PreProcessEuclidean:59 There are links with stored length smaller than their Euclidean distance in this network. Thus, A* cannot guarantee to calculate the least-cost paths between two nodes.
+2020-12-08T21:24:53,492  INFO PreProcessLandmarks:112 Putting landmarks on network...
+2020-12-08T21:24:53,494  INFO LandmarkerPieSlices:96 Filling sectors...
+2020-12-08T21:24:53,501  INFO LandmarkerPieSlices:107 Refining landmarks...
+2020-12-08T21:24:53,502  INFO LandmarkerPieSlices:109 done
+2020-12-08T21:24:53,502  INFO PreProcessLandmarks:115 done in 10 ms
+2020-12-08T21:24:53,502  INFO PreProcessLandmarks:117 Initializing landmarks data
+2020-12-08T21:24:53,503  INFO PreProcessLandmarks:129 Calculating distance from each node to each of the 16 landmarks using 2 threads...
+2020-12-08T21:24:53,504  INFO PreProcessLandmarks:139 wait for landmarks Calculator to finish...
+2020-12-08T21:24:53,578  INFO PreProcessLandmarks:161 done in 75 ms
+2020-12-08T21:24:53,583  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
+2020-12-08T21:24:53,607  INFO Counter:69 [PersonPrepareForSim] handled person # 1
+2020-12-08T21:24:53,607  INFO Counter:69 [PersonPrepareForSim] handled person # 2
+2020-12-08T21:24:53,619  INFO Counter:69 [PersonPrepareForSim] handled person # 4
+2020-12-08T21:24:53,624  INFO Counter:69 [PersonPrepareForSim] handled person # 8
+2020-12-08T21:24:53,632  INFO Counter:69 [PersonPrepareForSim] handled person # 16
+2020-12-08T21:24:53,644  INFO Counter:69 [PersonPrepareForSim] handled person # 32
+2020-12-08T21:24:53,693  INFO Counter:69 [PersonPrepareForSim] handled person # 64
+2020-12-08T21:24:53,761  INFO Counter:69 [PersonPrepareForSim] handled person # 128
+2020-12-08T21:24:53,851  INFO Counter:69 [PersonPrepareForSim] handled person # 256
+2020-12-08T21:24:53,977  INFO Counter:69 [PersonPrepareForSim] handled person # 512
+2020-12-08T21:24:54,135  INFO Counter:69 [PersonPrepareForSim] handled person # 1024
+2020-12-08T21:24:54,429  INFO Counter:69 [PersonPrepareForSim] handled person # 2048
+2020-12-08T21:24:54,459  INFO Counter:74 [PersonPrepareForSim] handled person # 2123
+2020-12-08T21:24:54,462  INFO AbstractController:124 ###################################################
+2020-12-08T21:24:54,462  INFO AbstractController:125 ### ITERATION 0 BEGINS
+2020-12-08T21:24:54,463  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.analysis.LegHistogramListener
+2020-12-08T21:24:54,463  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.analysis.LinkStatsControlerListener
+2020-12-08T21:24:54,463  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.core.replanning.ReplanningContextImpl
+2020-12-08T21:24:54,463  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.core.scoring.ScoringFunctionsForPopulation$1
+2020-12-08T21:24:54,476  INFO ControlerListenerManagerImpl:145 calling notifyIterationStarts on org.matsim.core.scoring.ExperiencedPlansServiceImpl$1
+2020-12-08T21:24:54,477  INFO ControlerListenerManagerImpl:148 [it.0] all ControlerIterationStartsListeners called.
+2020-12-08T21:24:54,477  INFO ControlerListenerManagerImpl:224 calling notifyBeforeMobsim on org.matsim.core.controler.corelisteners.EventsHandlingImpl
+2020-12-08T21:24:54,477  INFO EventsManagerImpl:184 resetting Event-Handlers
+2020-12-08T21:24:54,477  INFO EventsManagerImpl:191   org.matsim.core.trafficmonitoring.TravelTimeCalculator
+2020-12-08T21:24:54,479  INFO EventsManagerImpl:191   org.matsim.core.scoring.EventsToLegsAndActivities
+2020-12-08T21:24:54,479  INFO EventsManagerImpl:191   org.matsim.analysis.VolumesAnalyzer
+2020-12-08T21:24:54,480  INFO EventsManagerImpl:191   org.matsim.core.scoring.ScoringFunctionsForPopulation
+2020-12-08T21:24:54,480  INFO EventsManagerImpl:191   org.matsim.analysis.LegHistogram
+2020-12-08T21:24:54,480  INFO EventsManagerImpl:191   org.matsim.analysis.CalcLegTimes
+2020-12-08T21:24:54,480  INFO EventsManagerImpl:191   org.matsim.contrib.av.robotaxi.fares.drt.DrtFareHandler
+2020-12-08T21:24:54,482  INFO EventsManagerImpl:158 adding Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
+2020-12-08T21:24:54,482  INFO EventsManagerImpl:162   org.matsim.core.events.algorithms.EventWriter
+2020-12-08T21:24:54,482  INFO EventsManagerImpl:162   org.matsim.core.events.handler.BasicEventHandler
+2020-12-08T21:24:54,482  INFO EventsManagerImpl:221     > org.matsim.api.core.v01.events.Event
+2020-12-08T21:24:54,482  INFO EventsManagerImpl:170 
+2020-12-08T21:24:54,482  INFO EventsManagerImpl:158 adding Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
+2020-12-08T21:24:54,483  INFO EventsManagerImpl:162   org.matsim.core.events.algorithms.EventWriter
+2020-12-08T21:24:54,483  INFO EventsManagerImpl:162   org.matsim.core.events.handler.BasicEventHandler
+2020-12-08T21:24:54,483  INFO EventsManagerImpl:221     > org.matsim.api.core.v01.events.Event
+2020-12-08T21:24:54,483  INFO EventsManagerImpl:170 
+2020-12-08T21:24:54,483  INFO ControlerListenerManagerImpl:224 calling notifyBeforeMobsim on org.matsim.core.controler.corelisteners.PlansDumpingImpl
+2020-12-08T21:24:54,483  INFO PlansDumpingImpl:76 dumping plans...
+2020-12-08T21:24:54,487  WARN ObjectAttributesConverter:77 No AttributeConverter found for class java.util.Collections$UnmodifiableMap. Not all attribute values can be converted.
+2020-12-08T21:24:54,488  INFO Counter:69 [PopulationWriter] dumped person # 1
+2020-12-08T21:24:54,488  INFO Counter:69 [PopulationWriter] dumped person # 2
+2020-12-08T21:24:54,489  INFO Counter:69 [PopulationWriter] dumped person # 4
+2020-12-08T21:24:54,489  INFO Counter:69 [PopulationWriter] dumped person # 8
+2020-12-08T21:24:54,491  INFO Counter:69 [PopulationWriter] dumped person # 16
+2020-12-08T21:24:54,493  INFO Counter:69 [PopulationWriter] dumped person # 32
+2020-12-08T21:24:54,497  INFO Counter:69 [PopulationWriter] dumped person # 64
+2020-12-08T21:24:54,504  INFO Counter:69 [PopulationWriter] dumped person # 128
+2020-12-08T21:24:54,516  INFO Counter:69 [PopulationWriter] dumped person # 256
+2020-12-08T21:24:54,536  INFO Counter:69 [PopulationWriter] dumped person # 512
+2020-12-08T21:24:54,568  INFO Counter:69 [PopulationWriter] dumped person # 1024
+2020-12-08T21:24:54,627  INFO Counter:69 [PopulationWriter] dumped person # 2048
+2020-12-08T21:24:54,633  INFO PopulationWriter:144 Population written to: scenarios/ue5_input_files/myOutput/car-case/ITERS/it.0/car-case.0.plans.xml.gz
+2020-12-08T21:24:54,635  INFO Counter:74 [PopulationWriter] dumped person # 2123
+2020-12-08T21:24:54,635  INFO PlansDumpingImpl:93 finished plans dump.
+2020-12-08T21:24:54,635  INFO ControlerListenerManagerImpl:229 calling notifyBeforeMobsim on org.matsim.core.population.VspPlansCleaner
+2020-12-08T21:24:54,640  INFO ControlerListenerManagerImpl:232 [it.0] all ControlerBeforeMobsimListeners called.
+2020-12-08T21:24:54,640  INFO PrepareForMobsimImpl:83 Network seems to be multimodal. Create car-only network which is handed over to PersonPrepareForSim.
+2020-12-08T21:24:54,641  INFO NetworkImpl:163  node # 1
+2020-12-08T21:24:54,641  INFO NetworkImpl:163  node # 4
+2020-12-08T21:24:54,641  INFO NetworkImpl:163  node # 16
+2020-12-08T21:24:54,641  INFO NetworkImpl:163  node # 64
+2020-12-08T21:24:54,641  INFO NetworkImpl:163  node # 256
+2020-12-08T21:24:54,641  INFO NetworkImpl:163  node # 1024
+2020-12-08T21:24:54,643  INFO NetworkImpl:163  node # 4096
+2020-12-08T21:24:54,643  INFO NetworkImpl:159  link # 1
+2020-12-08T21:24:54,643  INFO NetworkImpl:159  link # 4
+2020-12-08T21:24:54,644  INFO NetworkImpl:159  link # 16
+2020-12-08T21:24:54,644  INFO NetworkImpl:159  link # 64
+2020-12-08T21:24:54,644  INFO NetworkImpl:159  link # 256
+2020-12-08T21:24:54,645  INFO NetworkImpl:159  link # 1024
+2020-12-08T21:24:54,650  INFO NetworkImpl:159  link # 4096
+2020-12-08T21:24:54,660  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
+2020-12-08T21:24:54,663  INFO RandomizingTimeDistanceTravelDisutilityFactory:85  sigma: 3.0; resulting normalization: 0.011108996538242306
+2020-12-08T21:24:54,674  INFO Counter:69 [PersonPrepareForSim] handled person # 2
+2020-12-08T21:24:54,674  INFO Counter:69 [PersonPrepareForSim] handled person # 1
+2020-12-08T21:24:54,675  INFO Counter:69 [PersonPrepareForSim] handled person # 4
+2020-12-08T21:24:54,675  INFO Counter:69 [PersonPrepareForSim] handled person # 8
+2020-12-08T21:24:54,675  INFO Counter:69 [PersonPrepareForSim] handled person # 16
+2020-12-08T21:24:54,675  INFO Counter:69 [PersonPrepareForSim] handled person # 32
+2020-12-08T21:24:54,675  INFO Counter:69 [PersonPrepareForSim] handled person # 64
+2020-12-08T21:24:54,676  INFO Counter:69 [PersonPrepareForSim] handled person # 128
+2020-12-08T21:24:54,676  INFO Counter:69 [PersonPrepareForSim] handled person # 256
+2020-12-08T21:24:54,677  INFO Counter:69 [PersonPrepareForSim] handled person # 512
+2020-12-08T21:24:54,678  INFO Counter:69 [PersonPrepareForSim] handled person # 1024
+2020-12-08T21:24:54,681  INFO Counter:69 [PersonPrepareForSim] handled person # 2048
+2020-12-08T21:24:54,681  INFO Counter:74 [PersonPrepareForSim] handled person # 2123
+2020-12-08T21:24:54,737  INFO MobsimListenerManager:49 calling addQueueSimulationListener
+2020-12-08T21:24:54,738  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.vis.snapshotwriters.SnapshotWriterManager
+2020-12-08T21:24:54,738  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimAfterSimStepListener
+2020-12-08T21:24:54,738  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeCleanupListener
+2020-12-08T21:24:54,738  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimInitializedListener
+2020-12-08T21:24:54,739  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
+2020-12-08T21:24:54,773  INFO QSimProvider:102 Added MobsimEngine class org.matsim.core.mobsim.qsim.ActivityEngineDefaultImpl
+2020-12-08T21:24:54,773  INFO QSimProvider:108 Added Activityhandler class org.matsim.core.mobsim.qsim.ActivityEngineDefaultImpl
+2020-12-08T21:24:54,773  INFO QSimProvider:114 Added DepartureHandler class org.matsim.core.mobsim.qsim.qnetsimengine.VehicularDepartureHandler
+2020-12-08T21:24:54,773  INFO QSimProvider:102 Added MobsimEngine class org.matsim.core.mobsim.qsim.qnetsimengine.QNetsimEngineWithThreadpool
+2020-12-08T21:24:54,773  INFO QSimProvider:102 Added MobsimEngine class org.matsim.core.mobsim.qsim.DefaultTeleportationEngine
+2020-12-08T21:24:54,773  INFO QSimProvider:114 Added DepartureHandler class org.matsim.core.mobsim.qsim.DefaultTeleportationEngine
+2020-12-08T21:24:54,774  INFO QSimProvider:120 Added AgentSource class org.matsim.core.mobsim.qsim.agents.PopulationAgentSource
+2020-12-08T21:24:54,774  INFO MobsimListenerManager:49 calling addQueueSimulationListener
+2020-12-08T21:24:54,774  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.qsim.messagequeueengine.MessageQueueEngine
+2020-12-08T21:24:54,774  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimBeforeSimStepListener
+2020-12-08T21:24:54,774  INFO MobsimListenerManager:53   assigned class org.matsim.core.mobsim.framework.listeners.MobsimListener to interface org.matsim.core.mobsim.framework.listeners.MobsimListener
+2020-12-08T21:24:54,774  INFO QSimProvider:126 Added MobsimListener class org.matsim.core.mobsim.qsim.messagequeueengine.MessageQueueEngine
+2020-12-08T21:24:54,779  INFO PopulationUtils:1194 adding scenario element for allpersons container
+2020-12-08T21:24:54,779  INFO PopulationImpl:105  person # 1
+2020-12-08T21:24:54,779  INFO PopulationImpl:105  person # 4
+2020-12-08T21:24:54,779  INFO PopulationImpl:105  person # 16
+2020-12-08T21:24:54,779  INFO PopulationImpl:105  person # 64
+2020-12-08T21:24:54,780  INFO PopulationImpl:105  person # 256
+2020-12-08T21:24:54,783  INFO PopulationImpl:105  person # 1024
+2020-12-08T21:24:54,786  INFO VehicleUtils:328 adding scenario element for allvehicles container
+2020-12-08T21:24:54,786  INFO Counter:69 [VehiclesImpl] added vehicle # 1
+2020-12-08T21:24:54,786  INFO Counter:69 [VehiclesImpl] added vehicle # 2
+2020-12-08T21:24:54,786  INFO Counter:69 [VehiclesImpl] added vehicle # 4
+2020-12-08T21:24:54,786  INFO Counter:69 [VehiclesImpl] added vehicle # 8
+2020-12-08T21:24:54,786  INFO Counter:69 [VehiclesImpl] added vehicle # 16
+2020-12-08T21:24:54,786  INFO Counter:69 [VehiclesImpl] added vehicle # 32
+2020-12-08T21:24:54,787  INFO Counter:69 [VehiclesImpl] added vehicle # 64
+2020-12-08T21:24:54,787  INFO Counter:69 [VehiclesImpl] added vehicle # 128
+2020-12-08T21:24:54,788  INFO Counter:69 [VehiclesImpl] added vehicle # 256
+2020-12-08T21:24:54,789  INFO Counter:69 [VehiclesImpl] added vehicle # 512
+2020-12-08T21:24:54,791  INFO Counter:69 [VehiclesImpl] added vehicle # 1024
+2020-12-08T21:24:54,794  INFO Counter:69 [VehiclesImpl] added vehicle # 2048
+2020-12-08T21:24:54,800  INFO AbstractQNetsimEngine:427 Assigned 4477 nodes and 10729 links to QSimEngineRunner #0
+2020-12-08T21:24:54,808  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 00:00:00 : #links=0 #nodes=0
+2020-12-08T21:24:54,814  INFO QSim:549 SIMULATION (NEW QSim) AT 00:00:00 : #Veh=2123 lost=0 simT=0.0s realT=0s; (s/r): 0.0
+2020-12-08T21:24:54,989  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 01:00:00 : #links=0 #nodes=0
+2020-12-08T21:24:54,989  INFO QSim:549 SIMULATION (NEW QSim) AT 01:00:00 : #Veh=2123 lost=0 simT=3600.0s realT=0s; (s/r): Infinity
+2020-12-08T21:24:55,108  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 02:00:00 : #links=0 #nodes=0
+2020-12-08T21:24:55,108  INFO QSim:549 SIMULATION (NEW QSim) AT 02:00:00 : #Veh=2123 lost=0 simT=7200.0s realT=0s; (s/r): Infinity
+2020-12-08T21:24:55,216  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 03:00:00 : #links=0 #nodes=0
+2020-12-08T21:24:55,216  INFO QSim:549 SIMULATION (NEW QSim) AT 03:00:00 : #Veh=2123 lost=0 simT=10800.0s realT=0s; (s/r): Infinity
+2020-12-08T21:24:55,330  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 04:00:00 : #links=0 #nodes=0
+2020-12-08T21:24:55,330  INFO QSim:549 SIMULATION (NEW QSim) AT 04:00:00 : #Veh=2123 lost=0 simT=14400.0s realT=0s; (s/r): Infinity
+2020-12-08T21:24:55,426  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 05:00:00 : #links=0 #nodes=0
+2020-12-08T21:24:55,427  INFO QSim:549 SIMULATION (NEW QSim) AT 05:00:00 : #Veh=2123 lost=0 simT=18000.0s realT=0s; (s/r): Infinity
+2020-12-08T21:24:55,451  INFO EventsManagerImpl:135  event # 1
+2020-12-08T21:24:55,452  INFO EventsManagerImpl:135  event # 4
+2020-12-08T21:24:55,456  INFO EventsManagerImpl:135  event # 16
+2020-12-08T21:24:55,464  INFO EventsManagerImpl:135  event # 64
+2020-12-08T21:24:55,501  INFO EventsManagerImpl:135  event # 256
+2020-12-08T21:24:55,545  INFO EventsManagerImpl:135  event # 1024
+2020-12-08T21:24:55,569  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 06:00:00 : #links=13 #nodes=0
+2020-12-08T21:24:55,569  INFO QSim:549 SIMULATION (NEW QSim) AT 06:00:00 : #Veh=2123 lost=0 simT=21600.0s realT=0s; (s/r): Infinity
+2020-12-08T21:24:55,610  INFO EventsManagerImpl:135  event # 4096
+2020-12-08T21:24:55,739  INFO EventsManagerImpl:135  event # 16384
+2020-12-08T21:24:56,079  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 07:00:00 : #links=106 #nodes=13
+2020-12-08T21:24:56,079  INFO QSim:549 SIMULATION (NEW QSim) AT 07:00:00 : #Veh=2123 lost=0 simT=25200.0s realT=1s; (s/r): 25200.0
+2020-12-08T21:24:56,148  INFO EventsManagerImpl:135  event # 65536
+2020-12-08T21:24:56,445  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 08:00:00 : #links=88 #nodes=23
+2020-12-08T21:24:56,445  INFO QSim:549 SIMULATION (NEW QSim) AT 08:00:00 : #Veh=2123 lost=0 simT=28800.0s realT=1s; (s/r): 28800.0
+2020-12-08T21:24:56,639  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 09:00:00 : #links=18 #nodes=1
+2020-12-08T21:24:56,639  INFO QSim:549 SIMULATION (NEW QSim) AT 09:00:00 : #Veh=2123 lost=0 simT=32400.0s realT=1s; (s/r): 32400.0
+2020-12-08T21:24:56,737  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 10:00:00 : #links=0 #nodes=0
+2020-12-08T21:24:56,737  INFO QSim:549 SIMULATION (NEW QSim) AT 10:00:00 : #Veh=2123 lost=0 simT=36000.0s realT=2s; (s/r): 18000.0
+2020-12-08T21:24:56,828  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 11:00:00 : #links=0 #nodes=0
+2020-12-08T21:24:56,828  INFO QSim:549 SIMULATION (NEW QSim) AT 11:00:00 : #Veh=2123 lost=0 simT=39600.0s realT=2s; (s/r): 19800.0
+2020-12-08T21:24:56,921  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 12:00:00 : #links=0 #nodes=0
+2020-12-08T21:24:56,921  INFO QSim:549 SIMULATION (NEW QSim) AT 12:00:00 : #Veh=2123 lost=0 simT=43200.0s realT=2s; (s/r): 21600.0
+2020-12-08T21:24:57,027  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 13:00:00 : #links=0 #nodes=0
+2020-12-08T21:24:57,027  INFO QSim:549 SIMULATION (NEW QSim) AT 13:00:00 : #Veh=2123 lost=0 simT=46800.0s realT=2s; (s/r): 23400.0
+2020-12-08T21:24:57,126  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 14:00:00 : #links=4 #nodes=1
+2020-12-08T21:24:57,126  INFO QSim:549 SIMULATION (NEW QSim) AT 14:00:00 : #Veh=2121 lost=0 simT=50400.0s realT=2s; (s/r): 25200.0
+2020-12-08T21:24:57,314  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 15:00:00 : #links=94 #nodes=16
+2020-12-08T21:24:57,314  INFO QSim:549 SIMULATION (NEW QSim) AT 15:00:00 : #Veh=1872 lost=0 simT=54000.0s realT=2s; (s/r): 27000.0
+2020-12-08T21:24:57,536  INFO EventsManagerImpl:135  event # 262144
+2020-12-08T21:24:57,617  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 16:00:00 : #links=110 #nodes=22
+2020-12-08T21:24:57,617  INFO QSim:549 SIMULATION (NEW QSim) AT 16:00:00 : #Veh=1017 lost=0 simT=57600.0s realT=2s; (s/r): 28800.0
+2020-12-08T21:24:57,887  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 17:00:00 : #links=46 #nodes=7
+2020-12-08T21:24:57,887  INFO QSim:549 SIMULATION (NEW QSim) AT 17:00:00 : #Veh=269 lost=0 simT=61200.0s realT=3s; (s/r): 20400.0
+2020-12-08T21:24:58,014  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 18:00:00 : #links=9 #nodes=2
+2020-12-08T21:24:58,014  INFO QSim:549 SIMULATION (NEW QSim) AT 18:00:00 : #Veh=101 lost=0 simT=64800.0s realT=3s; (s/r): 21600.0
+2020-12-08T21:24:58,126  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 19:00:00 : #links=1 #nodes=0
+2020-12-08T21:24:58,126  INFO QSim:549 SIMULATION (NEW QSim) AT 19:00:00 : #Veh=28 lost=0 simT=68400.0s realT=3s; (s/r): 22800.0
+2020-12-08T21:24:58,228  INFO AbstractQNetsimEngine:365 SIMULATION (QNetsimEngine) AT 20:00:00 : #links=1 #nodes=1
+2020-12-08T21:24:58,228  INFO QSim:549 SIMULATION (NEW QSim) AT 20:00:00 : #Veh=1 lost=0 simT=72000.0s realT=3s; (s/r): 24000.0
+2020-12-08T21:24:58,242  INFO AbstractController$9:221 ### ITERATION 0 fires after mobsim event
+2020-12-08T21:24:58,243  INFO ControlerListenerManagerImpl:248 calling notifyAfterMobsim on org.matsim.analysis.LegTimesControlerListener
+2020-12-08T21:24:58,243  INFO Gbl:191 Thread performance: Thread=class org.matsim.core.events.SimStepParallelEventsManagerImpl$ProcessEventsRunnable0  cpu-time=1.788014sec
+2020-12-08T21:24:58,246  INFO LegTimesControlerListener:50 [0] average trip (probably: leg) duration is: 392 seconds = 00:06:32
+2020-12-08T21:24:58,246  INFO ControlerListenerManagerImpl:248 calling notifyAfterMobsim on org.matsim.core.scoring.EventsToActivities$1
+2020-12-08T21:24:58,251  INFO ControlerListenerManagerImpl:251 [it.0] all ControlerAfterMobsimListeners called.
+2020-12-08T21:24:58,251  INFO AbstractController$4:150 ### ITERATION 0 fires scoring event
+2020-12-08T21:24:58,251  INFO ControlerListenerManagerImpl:183 calling notifyScoring on org.matsim.core.scoring.PlansScoringImpl
+2020-12-08T21:24:58,257  INFO NewScoreAssignerImpl:57 it: 0 msaStart: null
+2020-12-08T21:24:58,259  INFO ControlerListenerManagerImpl:194 [it.0] all ControlerScoringListeners called.
+2020-12-08T21:24:58,260  INFO AbstractController$5:158 ### ITERATION 0 fires iteration end event
+2020-12-08T21:24:58,260  INFO ControlerListenerManagerImpl:160 calling notifyIterationEnds on org.matsim.core.controler.corelisteners.EventsHandlingImpl
+2020-12-08T21:24:58,262  INFO EventsManagerImpl:175 removing Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
+2020-12-08T21:24:58,262  INFO EventsManagerImpl:175 removing Event-Handler: org.matsim.core.events.algorithms.EventWriterXML
+2020-12-08T21:24:58,262  INFO ControlerListenerManagerImpl:160 calling notifyIterationEnds on org.matsim.core.scoring.PlansScoringImpl
+2020-12-08T21:24:58,263  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.counts.CountsControlerListener
+2020-12-08T21:24:58,263  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.analysis.ModeStatsControlerListener
+2020-12-08T21:24:58,267  INFO ModeStatsControlerListener:142 Mode shares over all 5214.0 trips found. MainModeIdentifier: class org.matsim.core.router.RoutingModeMainModeIdentifier
+2020-12-08T21:24:58,267  INFO ModeStatsControlerListener:149 -- mode share of mode bike = 0.0
+2020-12-08T21:24:58,268  INFO ModeStatsControlerListener:149 -- mode share of mode car = 1.0
+2020-12-08T21:24:58,268  INFO ModeStatsControlerListener:149 -- mode share of mode drt = 0.0
+2020-12-08T21:24:58,268  INFO ModeStatsControlerListener:149 -- mode share of mode other = 0.0
+2020-12-08T21:24:58,268  INFO ModeStatsControlerListener:149 -- mode share of mode pt = 0.0
+2020-12-08T21:24:58,268  INFO ModeStatsControlerListener:149 -- mode share of mode ride = 0.0
+2020-12-08T21:24:58,268  INFO ModeStatsControlerListener:149 -- mode share of mode walk = 0.0
+2020-12-08T21:24:58,268  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.analysis.ScoreStatsControlerListener
+2020-12-08T21:24:58,269  INFO ScoreStatsControlerListener:181 -- avg. score of the executed plan of each agent: 86.70280995296349
+2020-12-08T21:24:58,269  INFO ScoreStatsControlerListener:182 -- avg. score of the worst plan of each agent: 86.70280995296349
+2020-12-08T21:24:58,270  INFO ScoreStatsControlerListener:183 -- avg. of the avg. plan score per agent: 86.70280995296349
+2020-12-08T21:24:58,270  INFO ScoreStatsControlerListener:184 -- avg. score of the best plan of each agent: 86.70280995296349
+2020-12-08T21:24:58,272  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.analysis.IterationTravelStatsControlerListener
+2020-12-08T21:24:58,307  INFO TravelDistanceStats:143 -- average leg distance per plan (executed plans only): 5553.25401961015 meters
+2020-12-08T21:24:58,308  INFO TravelDistanceStats:144 average leg distance per Person (executed plans only): 13638.561685467415 meters (statistic on all 5214 legs which have a finite distance)
+2020-12-08T21:24:58,308  INFO TravelDistanceStats:145 -- average trip distance per plan (executed plans only): 5553.25401961015 meters
+2020-12-08T21:24:58,308  INFO TravelDistanceStats:146 average trip distance per Person (executed plans only): 13638.561685467415 meters (statistic on all 5214 trips which have a finite distance)
+2020-12-08T21:24:58,308  INFO TravelDistanceStats:147 (TravelDistanceStats takes an average over all legs where the simulation reports travelled (network) distances
+2020-12-08T21:24:58,308  INFO TravelDistanceStats:148 (and teleported legs whose route contains a distance.)
+2020-12-08T21:24:58,486  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.analysis.LegHistogramListener
+2020-12-08T21:24:58,492  INFO LegHistogramListener:72 number of legs:	5214	100%
+2020-12-08T21:24:58,493  INFO LegHistogramListener:79 number of car legs:	5214	100.0%
+2020-12-08T21:24:59,897  INFO ControlerListenerManagerImpl:167 calling notifyIterationEnds on org.matsim.analysis.LinkStatsControlerListener
+2020-12-08T21:24:59,897  INFO ControlerListenerManagerImpl:171 [it.0] all ControlerIterationEndsListeners called.
+2020-12-08T21:25:00,084  INFO AbstractController:168 ### ITERATION 0 ENDS
+2020-12-08T21:25:00,084  INFO AbstractController:169 ###################################################
+2020-12-08T21:25:00,084  INFO MatsimRuntimeModifications:79 S H U T D O W N   ---   start shutdown.
+2020-12-08T21:25:00,084  INFO ControlerListenerManagerImpl:121 calling notifyShutdown on org.matsim.core.controler.corelisteners.EventsHandlingImpl
+2020-12-08T21:25:00,084  INFO ControlerListenerManagerImpl:121 calling notifyShutdown on org.matsim.core.controler.corelisteners.DumpDataAtEndImpl
+2020-12-08T21:25:00,086  WARN ObjectAttributesConverter:77 No AttributeConverter found for class java.util.Collections$UnmodifiableMap. Not all attribute values can be converted.
+2020-12-08T21:25:00,086  INFO Counter:69 [PopulationWriter] dumped person # 1
+2020-12-08T21:25:00,086  INFO Counter:69 [PopulationWriter] dumped person # 2
+2020-12-08T21:25:00,087  INFO Counter:69 [PopulationWriter] dumped person # 4
+2020-12-08T21:25:00,087  INFO Counter:69 [PopulationWriter] dumped person # 8
+2020-12-08T21:25:00,088  INFO Counter:69 [PopulationWriter] dumped person # 16
+2020-12-08T21:25:00,089  INFO Counter:69 [PopulationWriter] dumped person # 32
+2020-12-08T21:25:00,091  INFO Counter:69 [PopulationWriter] dumped person # 64
+2020-12-08T21:25:00,096  INFO Counter:69 [PopulationWriter] dumped person # 128
+2020-12-08T21:25:00,103  INFO Counter:69 [PopulationWriter] dumped person # 256
+2020-12-08T21:25:00,118  INFO Counter:69 [PopulationWriter] dumped person # 512
+2020-12-08T21:25:00,150  INFO Counter:69 [PopulationWriter] dumped person # 1024
+2020-12-08T21:25:00,206  INFO Counter:69 [PopulationWriter] dumped person # 2048
+2020-12-08T21:25:00,209  INFO PopulationWriter:144 Population written to: scenarios/ue5_input_files/myOutput/car-case/car-case.output_plans.xml.gz
+2020-12-08T21:25:00,210  INFO Counter:74 [PopulationWriter] dumped person # 2123
+2020-12-08T21:25:00,211  INFO NetworkWriter:69 Writing network to file: scenarios/ue5_input_files/myOutput/car-case/car-case.output_network.xml.gz...
+2020-12-08T21:25:00,306  INFO NetworkWriter:72 done.
+2020-12-08T21:25:00,310  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,313  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,316  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,318  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,323  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,326  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,328  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,330  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,333  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,335  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,337  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,339  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,344  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,347  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,349  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,352  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,357  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,359  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,361  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,364  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,370  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,372  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,374  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,376  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,378  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,381  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,383  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,385  INFO Config:587 setting context to [file:/Users/jakob/debianserv/data/Uni/Master/2020_WS/eclipse/matsim-example-project-new/]
+2020-12-08T21:25:00,390  INFO MatsimVehicleWriter:54 about to write vehicles to: scenarios/ue5_input_files/myOutput/car-case/car-case.output_vehicles.xml.gz
+2020-12-08T21:25:00,390  INFO VehicleWriterV2:63 about to write vehicles to: scenarios/ue5_input_files/myOutput/car-case/car-case.output_vehicles.xml.gz
+2020-12-08T21:25:00,395  INFO MatsimVehicleWriter:54 about to write vehicles to: scenarios/ue5_input_files/myOutput/car-case/car-case.output_allVehicles.xml.gz
+2020-12-08T21:25:00,395  INFO VehicleWriterV2:63 about to write vehicles to: scenarios/ue5_input_files/myOutput/car-case/car-case.output_allVehicles.xml.gz
+2020-12-08T21:25:00,400  INFO HouseholdsWriterV10:66 about to write  households to: scenarios/ue5_input_files/myOutput/car-case/car-case.output_households.xml.gz
+2020-12-08T21:25:00,400  INFO Counter:74 [HouseholdsWriter] wrote household # 0
+2020-12-08T21:25:00,426  INFO ControlerListenerManagerImpl:126 calling notifyShutdown on org.matsim.analysis.ModeStatsControlerListener
+2020-12-08T21:25:00,426  INFO ControlerListenerManagerImpl:126 calling notifyShutdown on org.matsim.analysis.ScoreStatsControlerListener
+2020-12-08T21:25:00,426  INFO ControlerListenerManagerImpl:126 calling notifyShutdown on org.matsim.analysis.IterationTravelStatsControlerListener
+2020-12-08T21:25:00,702  INFO IterationTravelStatsControlerListener:100 Writing all Person and Attributes to personscsv
+2020-12-08T21:25:00,721  INFO IterationTravelStatsControlerListener:134 ...done
+2020-12-08T21:25:00,721  INFO ControlerListenerManagerImpl:129 all ControlerShutdownListeners called.
+2020-12-08T21:25:00,721  INFO MatsimRuntimeModifications:102 S H U T D O W N   ---   shutdown completed.
+2020-12-08T21:25:00,721  INFO OutputDirectoryLogging:170 closing the logfile, i.e. messages sent to the logger after this message are not written to the logfile.

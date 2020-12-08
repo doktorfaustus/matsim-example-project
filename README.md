@@ -1,3 +1,4 @@
+*For testing purposes, this is my little working copy of the:*
 # matsim-example-project
 
 A small example of how to use MATSim as a library.
